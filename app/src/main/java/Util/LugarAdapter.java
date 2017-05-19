@@ -1,6 +1,7 @@
 package Util;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
@@ -19,7 +20,9 @@ public class LugarAdapter {
         public final static String LATITUD="Latitud";
         public final static String LONGITUD="Longitud";
     }
-
+    private final static String[] COLUMNS={
+            Columns._ID,Columns.LONGITUD,Columns.LATITUD,Columns.TELEFONO,Columns.DIRECCION
+    };
     public final static String CR_TABLE="create table if not exists "+NAME+" ("+Columns._ID
             +" integer primary key autoincrement, "+Columns.DIRECCION+" text ,"+Columns.TELEFONO+" text,"
             + Columns.LATITUD+" integer,"+ Columns.LONGITUD+ "integer)";
@@ -31,5 +34,22 @@ public class LugarAdapter {
         valores.put(Columns.TELEFONO,telefono);
         return sqlDB.insert(NAME,null,valores)>0;
     }
+    public boolean delete(int Id){
+        String whereClause=Columns._ID+"=?";
+        String [] whereArgs={String.valueOf(Id)};
+        return sqlDB.delete(NAME,whereClause,whereArgs)>0;
+    }
+    public String getName(){
 
+        return NAME;
+    }
+    public String[] getColumns(){
+        return COLUMNS;
+    }
+    public boolean isEmpty(){
+        return sqlDB.query(NAME,COLUMNS,null,null,null,null,null).getCount()==0;
+    }
+    public Cursor getLugares(){
+        return sqlDB.query(NAME,COLUMNS,null,null,null,null,null,null);
+    }
 }
