@@ -44,7 +44,7 @@ public class ResidenciaAdapter {
     };
 
 
-    public final static String CR_TABLE = "create talbe if not exist " + NAME + " ("
+    public final static String CR_TABLE = "create table if not exist " + NAME + " ("
             + Columns._ID + " integer primary key autoincrement, " + Columns.DESCRIPCION + " text, "
             + Columns.PAGO + " text, " + Columns.CONTACTO  + "text ," +
             Columns.TITULO + "text, " + Columns.URL_FICHA_INGRESO + "text, " +

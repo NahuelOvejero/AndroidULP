@@ -30,7 +30,7 @@ public class MateriaAdapter {
     }
     public boolean delete(int idMateria){
         String[] whereArgs={String.valueOf(idMateria)};
-        return sqlDB.delete(NAME,"Id_matera=?",whereArgs)>0;
+        return sqlDB.delete(NAME,"Id_materia=?",whereArgs)>0;
     }
     public String getName(){
         return NAME;
