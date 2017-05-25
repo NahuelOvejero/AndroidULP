@@ -22,7 +22,7 @@ public class ItemRequisitoAdapter {
 
     private final static String[] COLUMNS = { Columns.REQ_ID,Columns.ITM_ID};
 
-    public final static String CR_TABL = "create table if not exists "+ NAME + "( "
+    public final static String CR_TABLE = "create table if not exists "+ NAME + "( "
             +Columns.REQ_ID + "integer, " +Columns.ITM_ID+" integer, "
             +" foreing key ("+Columns.REQ_ID+") references "+RequisitoAdapter.getName()+ "("+ RequisitoAdapter.getColumnId()+")"
             +" foreing key ("+Columns.ITM_ID+") references "+ItemAdapter.getName()+ "("+ ItemAdapter.getColumnId()+")"

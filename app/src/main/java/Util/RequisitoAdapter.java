@@ -21,7 +21,7 @@ public class RequisitoAdapter{
 
     private final static String[] COLUMNS = { Columns.ID, Columns.DESCRIPCION};
 
-    public final static String CR_TABL = "create table if not exists "+ NAME + "( "
+    public final static String CR_TABLE = "create table if not exists "+ NAME + "( "
             +Columns.ID + "integer primary key autoincrement, " +Columns.DESCRIPCION+" text not null)";
 
     public static String getName()
