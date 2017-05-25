@@ -21,21 +21,22 @@ public class BaseApplication extends Application {
 
         dbAdapter = new DBAdapter(getApplicationContext());
         dbAdapter.open();
-
         super.onCreate();
     }
 
     public void onTerminate(){
         dbAdapter.close();
-
         super.onTerminate();
-
     }
+
     //duracion se basa en años, 3 representaria 3 años, y 1,5 un año y medio.
 
     public boolean insertarCarrera(int Id, String titulo,float Duracion){
-       return false;
-        // return dbAdapter.insertCarrera(Id,titulo,Duracion);
+        return dbAdapter.insertCarrear(Id,titulo,Duracion);
+    }
+
+    public boolean insertarComodidad(){
+        return false;
     }
 
     public ArrayList<String> nombresCarreras(){

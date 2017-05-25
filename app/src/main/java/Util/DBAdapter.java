@@ -5,6 +5,7 @@ package Util;
  */
 
 
+import android.content.ClipData;
 import android.database.Cursor;
 
 import  android.content.Context;
@@ -14,47 +15,99 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DBAdapter {
 
     private DBHelper dbHelper;
-   private SQLiteDatabase sqlDB;
-    private CarreraAdapter carrera;
-    private LugarAdapter lugar;
-    private final static int DB_VERSION = 1;
+    private SQLiteDatabase sqlDB;
 
+    private final static int DB_VERSION = 1;
     private final static String DB_NAME = "ULP";
+
+    private CarreraAdapter carreraAdapter;
+    private ComodidadAdapter comodidadAdapter;
+    private DocumentacionAdapter documentacionAdapter;
+    private FotoAdapter fotoAdapter;
+    private ItemAdapter itemAdapter;
+    private ItemRequisitoAdapter itemRequisitoAdapter;
+    private LugarAdapter lugarAdapter;
+    private MateriaAdapter materiaAdapter;
+    private ObjetivoAdapter objetivoAdapter;
+    private  PerfilAdapter perfilAdapter;
+    private PlanAdapter planAdapter;
+    private RequisitoAdapter requisitoAdapter;
+    private  ResidenciaAdapter residenciaAdapter;
+
 
     // DEFINIR LOS ADAPTERS DE CADA TABLA
 
 
     public DBAdapter(Context con) {
         dbHelper = new DBHelper(con);
+    }
+
+
+
+    public boolean insertCarrera(int id,String nombre,float año){
+       return carreraAdapter.insert(nombre,año,id);
+    }
+
+    public boolean insertComodidad(int id, String desc, int res){
+        return comodidadAdapter.insert(id,desc,res);
+    }
+
+    public boolean insertDocumentacion(int id, String desc){
+        return documentacionAdapter.insert(id,desc);
+    }
+
+    public boolean insertFoto(String url, int idcarrera){
+        return fotoAdapter.insert(url,idcarrera);
+    }
+
+    public boolean insertItem(String descripcion){
+        return itemAdapter.insert(descripcion);
+    }
+
+    public boolean insertItemRequisito(String descripcion){
+        return requisitoAdapter.insert(descripcion);
+    }
+
+    public boolean insertLugar(String dir, String tel, int latitud,int longitud){
+        return lugarAdapter.insert(dir,tel,latitud,longitud);
+    }
+
+    public boolean insertMateria(int id,String nombre,int año){
+        return materiaAdapter.insert(id,nombre,año);
+    }
+
+    public boolean insertObjetivo (int id, String des, int res){
+        return objetivoAdapter.insert(id,des,res);
+    }
+
+    /*
+    public boolean booleaninsertPerfil(){
+
+    }*/
+
+    public boolean insertPlan(int id,int carreraID){
+        return planAdapter.insert(id,carreraID);
+    }
+
+    public boolean insertRequisito(String desc){
+        return requisitoAdapter.insert(desc);
+    }
+
+    public boolean insertResidencia(int id, String desc, String pago, String contact,String titulo, String urlficha,String urldeclaracion){
+
+        return residenciaAdapter.insert(id,desc,pago,contact,titulo,urlficha,urldeclaracion);
 
     }
-    //Funciona el join
-    public Cursor joinCarreraLugar(int IdCarrera){
-        String TC=CarreraAdapter.getName();
-        String TL=LugarAdapter.getName();
-       String query= "Select Telefono,Latitud,Longitud,Direccion,Titulo,Duracion from "+TC+" inner join "+ TL+" on "+TL+"."+ LugarAdapter.getIdColumn()+"="+TC+".Id_lugar_cursado where "+CarreraAdapter.getIdColumn()+"=?";
-       return sqlDB.rawQuery(query,new String[]{String.valueOf(IdCarrera)});
-    }
-    public boolean insertCarrear(int id,String nombre,double año,int lugar){
-        //hacer insercion
-       return carrera.insert(id,nombre,año,lugar);
-    }
-    public boolean insertLugar(String dir,String tel,int lat,int longitud,int idLugar){
-        return lugar.insert(dir,tel,lat,longitud,idLugar);
-    }
+
+
     public void open() {
 
-        //sqlDB = dbHelper.getWriteableDatabase();
+        sqlDB = dbHelper.getWritableDatabase();
 
-        //instancias de cada tabla-adapter
-        sqlDB=dbHelper.getWritableDatabase();
-        carrera = new CarreraAdapter(sqlDB);
-        lugar= new LugarAdapter(sqlDB);
 
     }
 
     public void close() {
-        //    sql.close();
         sqlDB.close();
     }
 
@@ -63,21 +116,45 @@ public class DBAdapter {
 //JOIN
         return r;
     }
-    private class DBHelper extends SQLiteOpenHelper {
+
+
+
+    class DBHelper extends SQLiteOpenHelper {
+
         public DBHelper(Context context){
-            super(context,DB_NAME,null,DB_VERSION);
-        }
-        @Override
-        public void onCreate(SQLiteDatabase db){
-            db.execSQL(CarreraAdapter.CR_TABLE);
-            db.execSQL(LugarAdapter.CR_TABLE);
+            super(context,DB_NAME, null , DB_VERSION);
         }
 
-        public void onUpgrade(SQLiteDatabase db,int oldVersion,int newVersion){
-            db.execSQL("drop table if exists "+ CarreraAdapter.CR_TABLE);
-            db.execSQL("drop table if exists "+ LugarAdapter.CR_TABLE);
-            onCreate(db);
+        public void onCreate(SQLiteDatabase db){
+
+            db.execSQL(carreraAdapter.CR_TABLE);
+            db.execSQL(comodidadAdapter.CR_TABLE);
+            db.execSQL(documentacionAdapter.CR_TABLE);
+            db.execSQL(fotoAdapter.CR_TABLE);
+            db.execSQL(itemAdapter.CR_TABLE);
+            db.execSQL(itemRequisitoAdapter.CR_TABLE);
+            db.execSQL(lugarAdapter.CR_TABLE);
+            db.execSQL(materiaAdapter.CR_TABLE);
+            //db.execSQL(PerfilAdapter.CR_TABLE);
+            db.execSQL(objetivoAdapter.CR_TABLE);
+            db.execSQL(planAdapter.CR_TABLE);
+            db.execSQL(requisitoAdapter.CR_TABLE);
+            db.execSQL(residenciaAdapter.CR_TABLE);
+
+
         }
+
+        @Override
+        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+            //no se van a actualizar las tablas de momento
+            //sorry.
+            //Nahuel Ovejero.
+        }
+
+
     }
 
+
+
 }
+

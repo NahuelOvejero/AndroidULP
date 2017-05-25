@@ -25,8 +25,8 @@ public class CarreraAdapter {
     private static String[] COLUMNS={Columns._ID,Columns.DURACION,Columns.TITULO};
     public final static String CR_TABLE="create talbe if not exist "+ NAME+" ("
             +Columns._ID+" integer primary key autoincrement, "+Columns.TITULO+" text, "
-            +Columns.DURACION +" integer,"+ Columns.IDLUGAR+" integer not null)";
-    public boolean insert (String Titulo,int Duracion,int IdLugar){
+            +Columns.DURACION +" float,"+ Columns.IDLUGAR+" integer not null)";
+    public boolean insert (String Titulo,float Duracion,int IdLugar){
         ContentValues valores=new ContentValues();
         valores.put(Columns.DURACION,Duracion);
         valores.put(Columns.TITULO,Titulo);
