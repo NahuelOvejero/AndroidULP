@@ -18,11 +18,13 @@ public class RequisitoAdapter{
         public final static String ID = "Id_requisito";
         public final static String DESCRIPCION = "Descripcion";
     }
-
+    public boolean isEmpty(){
+        return sqlDB.query(NAME,COLUMNS,null,null,null,null,null).getCount()==0;
+    }
     private final static String[] COLUMNS = { Columns.ID, Columns.DESCRIPCION};
 
     public final static String CR_TABLE = "create table if not exists "+ NAME + "( "
-            +Columns.ID + "integer primary key autoincrement, " +Columns.DESCRIPCION+" text not null)";
+            +Columns.ID + " integer primary key autoincrement, " +Columns.DESCRIPCION+" text not null)";
 
     public static String getName()
     {

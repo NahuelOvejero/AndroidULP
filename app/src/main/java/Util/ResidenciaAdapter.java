@@ -21,7 +21,7 @@ public class ResidenciaAdapter {
     private class Columns implements BaseColumns {
         public final static String _ID = "Id_residencia";
         public final static String DESCRIPCION = "Descripcion";
-        public final static String PAGO = "Pago";
+        public final static String CUPO = "Cupo";
         public final static String CONTACTO = "Contacto";
         public final static String TITULO = "URL_reglamento";
         public final static String URL_FICHA_INGRESO = "URL_ficha_ingreso";
@@ -36,25 +36,27 @@ public class ResidenciaAdapter {
     private static String[] COLUMNS = {
             Columns._ID,
             Columns.DESCRIPCION,
-            Columns.PAGO,
+            Columns.CUPO,
             Columns.CONTACTO,
             Columns.TITULO,
             Columns.URL_FICHA_INGRESO,
             Columns.URL_DECLARACION_JURADA
     };
+    public boolean isEmpty(){
+        return sqlDB.query(NAME,COLUMNS,null,null,null,null,null).getCount()==0;
+    }
 
-
-    public final static String CR_TABLE = "create table if not exist " + NAME + " ("
+    public final static String CR_TABLE = "create table if not exists " + NAME + " ("
             + Columns._ID + " integer primary key autoincrement, " + Columns.DESCRIPCION + " text, "
-            + Columns.PAGO + " text, " + Columns.CONTACTO  + "text ," +
-            Columns.TITULO + "text, " + Columns.URL_FICHA_INGRESO + "text, " +
+            + Columns.CUPO + " text, " + Columns.CONTACTO  + " text ," +
+            Columns.TITULO + " text, " + Columns.URL_FICHA_INGRESO + " text, " +
             Columns.URL_DECLARACION_JURADA + " text)";
 
-    public boolean insert(int id, String descripcion, String pago, String contacto,String titulo,String urlficha, String urldeclaracion) {
+    public boolean insert(int id, String descripcion, String cupo, String contacto,String titulo,String urlficha, String urldeclaracion) {
         ContentValues valores = new ContentValues();
         valores.put(Columns._ID,id);
         valores.put(Columns.DESCRIPCION,descripcion);
-        valores.put(Columns.PAGO,pago);
+        valores.put(Columns.CUPO,cupo);
         valores.put(Columns.CONTACTO,contacto);
         valores.put(Columns.TITULO,titulo);
         valores.put(Columns.URL_FICHA_INGRESO,urlficha);

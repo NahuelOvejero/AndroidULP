@@ -13,14 +13,21 @@ import android.util.StringBuilderPrinter;
 public class MateriaAdapter {
     private static final String NAME="Materia";
     private SQLiteDatabase sqlDB;
+    public MateriaAdapter(SQLiteDatabase sqlDB){
+        this.sqlDB=sqlDB;
+    }
     private class Columns implements BaseColumns{
         public static final String _ID="Id_materia";
         public static final String NOMBRE="Nombre";
         public static final String AÑO="Año";
     }
+    public static String getColumnId(){
+        return Columns._ID;
+    }
     private final static String[] COLUMNS={Columns._ID,Columns.AÑO,Columns.NOMBRE};
     public final static String CR_TABLE="create table if not exists "+NAME+" ("
             +Columns._ID+" integer primary key autoincrement, "+Columns.NOMBRE+" text, "+ Columns.AÑO+" integer)";
+
     public boolean insert(int Id,String nombre,int año){
         ContentValues valores= new ContentValues();
         valores.put(Columns._ID,Id);
@@ -32,13 +39,13 @@ public class MateriaAdapter {
         String[] whereArgs={String.valueOf(idMateria)};
         return sqlDB.delete(NAME,"Id_materia=?",whereArgs)>0;
     }
-    public String getName(){
+    public static String getName(){
         return NAME;
     }
     public String[] getColumns(){
         return COLUMNS;
     }
-    public Cursor getMaterias(){
-        return sqlDB.query(NAME,COLUMNS,null,null,null,null,null);
+    public boolean isEmpty(){
+        return sqlDB.query(NAME,COLUMNS,null,null,null,null,null).getCount()==0;
     }
 }

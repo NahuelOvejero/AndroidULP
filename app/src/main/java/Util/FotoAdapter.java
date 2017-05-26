@@ -13,7 +13,7 @@ public class FotoAdapter {
 
     //RECORDATORIO : SI EL ID_CARRERA ES NULO, SUCEDERA QUE LA FOTO PERTENECE A LA RESIDENCIA.
 
-    private static final String NAME = "Documentacion";
+    private static final String NAME = "Foto";
     private SQLiteDatabase sqlDB;
 
     public FotoAdapter(SQLiteDatabase sqlDB) {
@@ -34,7 +34,7 @@ public class FotoAdapter {
     };
 
 
-    public final static String CR_TABLE = "create talbe if not exist " + NAME + " ("
+    public final static String CR_TABLE = "create table if not exists " + NAME + " ("
             + Columns.URL_FOTO + " text primary key, " +
             Columns.ID_CARRERA + " integer)";
 
@@ -43,6 +43,9 @@ public class FotoAdapter {
         valores.put(Columns.URL_FOTO,urlfoto);
         valores.put(Columns.ID_CARRERA,id_carrera);
         return sqlDB.insert(NAME, null, valores) > 0;
+    }
+    public boolean isEmpty(){
+        return sqlDB.query(NAME,COLUMNS,null,null,null,null,null).getCount()==0;
     }
 
     public boolean delete(String urlfoto) {

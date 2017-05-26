@@ -1,6 +1,7 @@
 package Util;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
@@ -10,7 +11,7 @@ import android.provider.BaseColumns;
 
 public class ComodidadAdapter {
 
-    private static final String NAME = "Documentacion";
+    private static final String NAME = "Comodidad";
     private SQLiteDatabase sqlDB;
 
     public ComodidadAdapter(SQLiteDatabase sqlDB) {
@@ -34,9 +35,9 @@ public class ComodidadAdapter {
     };
 
 
-    public final static String CR_TABLE = "create talbe if not exist " + NAME + " ("
+    public final static String CR_TABLE = "create table if not exists " + NAME + " ("
             + Columns._ID + " integer primary key autoincrement, " +
-            Columns._IDRESIDENCIA + "integer ," +
+            Columns._IDRESIDENCIA + " integer ," +
             Columns.DESCRIPCION + " text)";
 
     public boolean insert(int id, String descripcion, int id_residencia) {
@@ -59,5 +60,12 @@ public class ComodidadAdapter {
 
     public String[] getCOLUMNS() {
         return COLUMNS;
+    }
+    public Cursor getComodidades(){
+        String[] col={Columns.DESCRIPCION};
+        return sqlDB.query(NAME,col,null,null,null,null,null);
+    }
+    public boolean isEmpty(){
+        return sqlDB.query(NAME,COLUMNS,null,null,null,null,null).getCount()==0;
     }
 }

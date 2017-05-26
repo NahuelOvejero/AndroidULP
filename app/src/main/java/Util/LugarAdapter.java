@@ -25,9 +25,10 @@ public class LugarAdapter {
     };
     public final static String CR_TABLE="create table if not exists "+NAME+" ("+Columns._ID
             +" integer primary key autoincrement, "+Columns.DIRECCION+" text ,"+Columns.TELEFONO+" text,"
-            + Columns.LATITUD+" integer,"+ Columns.LONGITUD+ "integer)";
-    public boolean insert(String direccion,String telefono,int latitud,int longitud){
+            + Columns.LATITUD+" double,"+ Columns.LONGITUD+ " double)";
+    public boolean insert(int Id,String direccion,String telefono,double latitud,double longitud){
         ContentValues valores=new ContentValues();
+        valores.put(Columns._ID,Id);
         valores.put(Columns.DIRECCION,direccion);
         valores.put(Columns.LATITUD,latitud);
         valores.put(Columns.LONGITUD,longitud);
@@ -39,9 +40,12 @@ public class LugarAdapter {
         String [] whereArgs={String.valueOf(Id)};
         return sqlDB.delete(NAME,whereClause,whereArgs)>0;
     }
-    public String getName(){
+    public static String getName(){
 
         return NAME;
+    }
+    public static String getColumnId(){
+        return Columns._ID;
     }
     public String[] getColumns(){
         return COLUMNS;
@@ -52,4 +56,5 @@ public class LugarAdapter {
     public Cursor getLugares(){
         return sqlDB.query(NAME,COLUMNS,null,null,null,null,null,null);
     }
+
 }

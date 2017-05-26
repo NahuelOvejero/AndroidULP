@@ -1,6 +1,7 @@
 package Util;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
@@ -34,12 +35,12 @@ public class DocumentacionAdapter {
     };
 
 
-    public final static String CR_TABLE = "create talbe if not exist " + NAME + " ("
+    public final static String CR_TABLE = "create table if not exists " + NAME + " ("
             + Columns._ID + " integer primary key autoincrement, " +
-            Columns._IDRESIDENCIA + "integer ," +
+            Columns._IDRESIDENCIA + " integer ," +
             Columns.DESCRIPCION + " text)";
 
-    public boolean insert(int id, String descripcion) {
+    public boolean insert(int id, String descripcion,int idResidencia) {
         ContentValues valores = new ContentValues();
         valores.put(Columns._ID, id);
         valores.put(Columns.DESCRIPCION, descripcion);
@@ -58,5 +59,13 @@ public class DocumentacionAdapter {
 
     public String[] getCOLUMNS() {
         return COLUMNS;
+    }
+
+    public Cursor getDocumentacion(){
+        String[] col={Columns.DESCRIPCION};
+        return sqlDB.query(NAME,col,null,null,null,null,null);
+    }
+    public boolean isEmpty(){
+        return sqlDB.query(NAME,COLUMNS,null,null,null,null,null).getCount()==0;
     }
 }
