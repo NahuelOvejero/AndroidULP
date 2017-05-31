@@ -41,9 +41,10 @@ public class RequisitoAdapter{
         return Columns.ID;
     }
 
-    public boolean insert(String descripcion)
+    public boolean insert(int IdRequisito,String descripcion)
     {
         ContentValues values = new ContentValues();
+        values.put(Columns.ID,IdRequisito);
         values.put(Columns.DESCRIPCION, descripcion);
         return sqlDB.insert(NAME, null, values ) >0;
     }

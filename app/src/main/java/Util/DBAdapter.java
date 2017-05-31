@@ -25,15 +25,14 @@ public class DBAdapter {
     private Competente_enAdapter competente_enAdapter;
     private DocumentacionAdapter documentacionAdapter;
     private FotoAdapter fotoAdapter;
-    private ItemAdapter itemAdapter;
-    private ItemxCarreraAdapter itemxCarreraAdapter;
+    private RequisitoxCarreraAdapter requisitoxCarreraAdapter;
     private LugarAdapter lugarAdapter;
     private MateriaAdapter materiaAdapter;
     private ObjetivoAdapter objetivoAdapter;
-    Profesional_queAdapter profesional_queAdapter;
+    private Profesional_queAdapter profesional_queAdapter;
     private RequisitoAdapter requisitoAdapter;
     private  ResidenciaAdapter residenciaAdapter;
-
+    private PorQueEstudiarAdapter porQueEstudiarAdapter;
 
 
     // DEFINIR LOS ADAPTERS DE CADA TABLA
@@ -60,15 +59,6 @@ public class DBAdapter {
     public boolean insertFoto(String url, int idcarrera){
         return fotoAdapter.insert(url,idcarrera);
     }
-
-    public boolean insertItem(int idItem,String descripcion){
-        return itemAdapter.insert(idItem,descripcion);
-    }
-
-    public boolean insertItemRequisito(String descripcion){
-        return requisitoAdapter.insert(descripcion);
-    }
-
     public boolean insertLugar(int IdLugar,String dir, String tel, double latitud,double longitud){
         return lugarAdapter.insert(IdLugar,dir,tel,latitud,longitud);
     }
@@ -94,9 +84,7 @@ public class DBAdapter {
         return carreraxMateriaAdapter.insert(id,carreraID);
     }
 
-    public boolean insertRequisito(String desc){
-        return requisitoAdapter.insert(desc);
-    }
+
 
     public boolean insertResidencia(int id, String desc, String pago, String contact,String titulo, String urlficha,String urldeclaracion){
 
@@ -115,14 +103,15 @@ public class DBAdapter {
         competente_enAdapter=new Competente_enAdapter(sqlDB);
         documentacionAdapter=new DocumentacionAdapter(sqlDB);
         fotoAdapter=new FotoAdapter(sqlDB);
-        itemAdapter=new ItemAdapter(sqlDB);
-        itemxCarreraAdapter=new ItemxCarreraAdapter(sqlDB);
+        requisitoxCarreraAdapter =new RequisitoxCarreraAdapter(sqlDB);
         lugarAdapter=new LugarAdapter(sqlDB);
         materiaAdapter=new MateriaAdapter(sqlDB);
         objetivoAdapter=new ObjetivoAdapter(sqlDB);
         profesional_queAdapter=new Profesional_queAdapter(sqlDB);
         requisitoAdapter=new RequisitoAdapter(sqlDB);
         residenciaAdapter=new ResidenciaAdapter(sqlDB);
+        porQueEstudiarAdapter=new PorQueEstudiarAdapter(sqlDB);
+        generarBD();
 
     }
     public void generarBD(){
@@ -374,8 +363,35 @@ public class DBAdapter {
             objetivoAdapter.insert(1,"Promover entre los residentes, aquellas actividades destinadas a completar sus estudios específicos buscando la apertura con espíritu interdisciplinario.",1);
             objetivoAdapter.insert(2,"Fomentar entre los residentes la realización efectiva de los ideales de la solidaridad, justicia, igualdad, libertad y tolerancia .",1);
         }
-
-
+        if(requisitoAdapter.isEmpty())
+        {
+            requisitoAdapter.insert(1,"Haber concluido la preinscripción web a la carrera");
+            requisitoAdapter.insert(2,"Fotocopia de DNI (1 y 2 hoja)");
+            requisitoAdapter.insert(3,"Fotocopia CIPE");
+            requisitoAdapter.insert(4,"Fotocopia legalizada del Certificado Analítico, en caso de no poseerla, Constancia de Certificado de estudios en trámite, detallando si adeuda materias (en caso de adeudar materias tendrán plazo de presentar el Certificado Analítico definitivo hasta el 30 de Junio)");
+            requisitoAdapter.insert(5,"2 fotos carnet 4 x 4");
+            requisitoAdapter.insert(6,"Certificado de Buena Salud");
+            requisitoAdapter.insert(7,"Acta de Nacimiento");
+            requisitoAdapter.insert(8,"Para mayores de 25 años sin título de nivel polimodal o su equivalente, para quien la aprobación estará sujeta a una evaluación de acuerdo a lo dispuesto en la legislación nacional vigente");
+        }
+        if(requisitoxCarreraAdapter.isEmpty())
+        {
+            for(int i=1;i<8;i++){
+                requisitoxCarreraAdapter.insert(i,1);
+                requisitoxCarreraAdapter.insert(i,2);
+                requisitoxCarreraAdapter.insert(i,3);
+                requisitoxCarreraAdapter.insert(i,4);
+            }
+        }
+        if(porQueEstudiarAdapter.isEmpty()){
+            porQueEstudiarAdapter.insert(1,"Carreras Cortas.");
+            porQueEstudiarAdapter.insert(2,"Rápida salida laboral.");
+            porQueEstudiarAdapter.insert(3,"Educación pública y gratuita.");
+            porQueEstudiarAdapter.insert(4,"Prácticas profesionales.");
+            porQueEstudiarAdapter.insert(5,"Salidas educativas.");
+            porQueEstudiarAdapter.insert(6,"Pasantías o becas de trabajo.");
+            porQueEstudiarAdapter.insert(7,"Residencia Universitaria.");
+        }
     }
     public void close() {
         sqlDB.close();
@@ -403,14 +419,14 @@ public class DBAdapter {
             db.execSQL(Competente_enAdapter.CR_TABLE);
             db.execSQL(DocumentacionAdapter.CR_TABLE);
             db.execSQL(FotoAdapter.CR_TABLE);
-            db.execSQL(ItemAdapter.CR_TABLE);
-            db.execSQL(ItemxCarreraAdapter.CR_TABLE);
+            db.execSQL(RequisitoxCarreraAdapter.CR_TABLE);
             db.execSQL(LugarAdapter.CR_TABLE);
             db.execSQL(MateriaAdapter.CR_TABLE);
             db.execSQL(ObjetivoAdapter.CR_TABLE);
             db.execSQL(Profesional_queAdapter.CR_TABLE);
             db.execSQL(RequisitoAdapter.CR_TABLE);
             db.execSQL(ResidenciaAdapter.CR_TABLE);
+            db.execSQL(PorQueEstudiarAdapter.CR_TABLE);
         }
 
         @Override
