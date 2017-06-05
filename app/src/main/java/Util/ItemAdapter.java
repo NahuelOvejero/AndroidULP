@@ -1,7 +1,6 @@
 package Util;
 
 import android.content.ContentValues;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
@@ -15,14 +14,14 @@ public class ItemAdapter{
     }
 
     private class Columns implements BaseColumns {
-        public final static String ID = "Id_item";
+        public final static String _ID = "Id_item";
         public final static String  DESCRIPCION= "Descripcion";
     }
 
-    private final static String[] COLUMNS = { Columns.ID, Columns.DESCRIPCION};
+    private final static String[] COLUMNS = { Columns._ID, Columns.DESCRIPCION};
 
     public final static String CR_TABLE = "create table if not exists "+ NAME + "( "+
-            Columns.ID + " integer primary key autoincrement, " +Columns.DESCRIPCION+" text";
+            Columns._ID + " integer primary key autoincrement, " +Columns.DESCRIPCION+" text";
 
     public static String getName(){
         return NAME;
@@ -34,20 +33,20 @@ public class ItemAdapter{
 
     public static String getColumnId()
     {
-        return Columns.ID;
+        return Columns._ID;
     }
 
     public boolean insert(int Id_item,String descripcion)
     {
         ContentValues values = new ContentValues();
-        values.put(Columns.ID,Id_item);
+        values.put(Columns._ID,Id_item);
         values.put(Columns.DESCRIPCION, descripcion);
         return sqlDB.insert(NAME, null, values ) >0;
     }
 
     public boolean delete(int id)
     {
-        String whereClause= Columns.ID +"= ?";
+        String whereClause= Columns._ID +"= ?";
         String[] whereArgs={ String.valueOf(id)};
         return sqlDB.delete(NAME,whereClause,whereArgs)>0;
     }

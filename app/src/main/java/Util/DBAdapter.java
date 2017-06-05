@@ -10,6 +10,7 @@ import android.database.Cursor;
 import  android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class DBAdapter {
 
@@ -392,6 +393,7 @@ public class DBAdapter {
             porQueEstudiarAdapter.insert(6,"Pasantías o becas de trabajo.");
             porQueEstudiarAdapter.insert(7,"Residencia Universitaria.");
         }
+        Log.d("Mensajito","Insertó todo");
     }
     public void close() {
         sqlDB.close();

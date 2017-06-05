@@ -19,7 +19,7 @@ public class ComodidadAdapter {
     }
 
     private class Columns implements BaseColumns {
-        public final static String _ID = "Id_residencia";
+        public final static String _ID = "Id_comodidad";
         public final static String DESCRIPCION = "Descripcion";
         public final static String _IDRESIDENCIA = "Id_residencia";
     }

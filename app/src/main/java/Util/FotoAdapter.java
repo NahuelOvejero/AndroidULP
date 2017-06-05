@@ -21,6 +21,7 @@ public class FotoAdapter {
     }
 
     private class Columns implements BaseColumns {
+        public final static String _ID="Id_foto";
         public final static String URL_FOTO = "URL_foto";
         public final static String ID_CARRERA = "Descripcion";
     }
@@ -35,7 +36,7 @@ public class FotoAdapter {
 
 
     public final static String CR_TABLE = "create table if not exists " + NAME + " ("
-            + Columns.URL_FOTO + " text primary key, " +
+            +Columns._ID+" integer primary key autoincrement , "+ Columns.URL_FOTO + " text , " +
             Columns.ID_CARRERA + " integer)";
 
     public boolean insert(String urlfoto, int id_carrera) {

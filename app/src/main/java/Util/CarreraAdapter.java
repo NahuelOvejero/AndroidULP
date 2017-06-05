@@ -26,8 +26,7 @@ public class CarreraAdapter {
     private static String[] COLUMNS={Columns._ID,Columns.DURACION,Columns.TITULO,Columns.DESCRIPCION,Columns.IDLUGAR};
     public final static String CR_TABLE="create table if not exists "+ NAME+" ("
             +Columns._ID+" integer primary key autoincrement, "+Columns.TITULO+" text, "
-            +Columns.DURACION +" float,"+ Columns.IDLUGAR+" integer not null ,"+Columns.DESCRIPCION +" text," +
-            "foreign key "+Columns.IDLUGAR+" references "+ LugarAdapter.getName()+"("+LugarAdapter.getColumnId()+"))";
+            +Columns.DURACION +" float,"+ Columns.IDLUGAR+" integer not null ,"+Columns.DESCRIPCION +" text)";
     public boolean insert (int IdCarrera,String Titulo,float Duracion,int IdLugar,String descr){
         ContentValues valores=new ContentValues();
         valores.put(Columns._ID,IdCarrera);

@@ -12,7 +12,7 @@ public class Profesional_queAdapter {
     private static final String NAME="Profesional_que";
     private SQLiteDatabase sqlDB;
     private class Columns implements BaseColumns{
-        public static final String ID="Id_profesional_que";
+        public static final String _ID ="Id_profesional_que";
         public static final String DESCRIPCION="Descripcion";
         public static final String IDCARRERA="Id_carrera";
     }
@@ -23,20 +23,20 @@ public class Profesional_queAdapter {
         return NAME;
     }
     public static String getColumnId(){
-        return Columns.ID;
+        return Columns._ID;
     }
     public boolean isEmpty(){
         return sqlDB.query(NAME,COLUMNS,null,null,null,null,null).getCount()==0;
     }
-    private String[] COLUMNS={Columns.ID,Columns.DESCRIPCION,Columns.IDCARRERA};
+    private String[] COLUMNS={Columns._ID,Columns.DESCRIPCION,Columns.IDCARRERA};
     public String[] getColumns(){
         return COLUMNS;
     }
-    public static String CR_TABLE="create table if not exists "+NAME+" ("+Columns.ID+" integer primary key autoincrement," +
-            Columns.DESCRIPCION+" text,"+ Columns.IDCARRERA+" integer foreign key references "+CarreraAdapter.getName()+"("+CarreraAdapter.getColumnId()+"))";
+    public static String CR_TABLE="create table if not exists "+NAME+" ("+Columns._ID +" integer primary key autoincrement," +
+            Columns.DESCRIPCION+" text,"+ Columns.IDCARRERA+" integer)";
     public boolean insert(int idProf,String descr,int IdCarrera){
         ContentValues values=new ContentValues();
-        values.put(Columns.ID,idProf);
+        values.put(Columns._ID,idProf);
         values.put(Columns.DESCRIPCION,descr);
         values.put(Columns.IDCARRERA,IdCarrera);
         return sqlDB.insert(NAME,null,values)>0;

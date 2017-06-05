@@ -15,25 +15,25 @@ public class Competente_enAdapter {
         this.sqlDB=sqlDB;
     }
     private class Columns implements BaseColumns{
-        public static final String ID="Id_competente_en";
+        public static final String _ID="Id_competente_en";
         public static final String DESCRIPCION="Descripcion";
         public static final String IDCARRERA="Id_carrera";
     }
-    public static String CR_TABLE="create table if not exists "+NAME+" ("+Columns.ID+" integer primary key autoincrement, "+Columns.DESCRIPCION+" text, "+Columns.IDCARRERA+" " +
-            "integer foreign key references "+CarreraAdapter.getName()+"("+CarreraAdapter.getColumnId()+"))";
+    public static String CR_TABLE="create table if not exists "+NAME+" ("+Columns._ID+" integer primary key autoincrement, "+Columns.DESCRIPCION+" text, "+Columns.IDCARRERA+" " +
+            "integer)";
     public static String getName(){
         return NAME;
     }
     public static String getColumnId(){
-        return Columns.ID;
+        return Columns._ID;
     }
-    private String[] COLUMNS={Columns.ID,Columns.DESCRIPCION};
+    private String[] COLUMNS={Columns._ID,Columns.DESCRIPCION};
     public String[] getCOLUMNS(){
         return COLUMNS;
     }
     public boolean insert(int IdCompe,String desc,int IdCar){
         ContentValues values=new ContentValues();
-        values.put(Columns.ID,IdCompe);
+        values.put(Columns._ID,IdCompe);
         values.put(Columns.DESCRIPCION,desc);
         values.put(Columns.IDCARRERA,IdCar);
         return sqlDB.insert(NAME,null,values)>0;
