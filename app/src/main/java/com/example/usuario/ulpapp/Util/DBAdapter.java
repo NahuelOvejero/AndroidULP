@@ -10,12 +10,20 @@ import android.database.Cursor;
 import  android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Rect;
 import android.util.Log;
 
 import com.example.usuario.ulpapp.parser.Noticia;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -115,6 +123,7 @@ public class DBAdapter {
     public void vaciarTablaNoticia(){
         noticiaAdapter.vaciarTabla();
     }
+
     public int ultimaActualizacionNoticias(){
         if(!noticiaAdapter.isEmpty() &&noticiaAdapter.noticia(1)!=null){
             Log.d("Fechas","Fechass");
@@ -146,7 +155,28 @@ public class DBAdapter {
         }
 
 
+        public List<Noticia> listaDeNoticias() {
+            List<Noticia> lista = new ArrayList<Noticia>();
+            Cursor c = noticiaAdapter.Noticias();
+            Noticia not;
+            if (c.moveToFirst()) {
 
+                do {
+                    //VERIFICAR INDICE DEL NOMBRE DE LA CARRERA EN LA TABLA
+                    not = new Noticia();
+                    not.setTitulo(c.getString(1));
+                    not.setDescripcion(c.getString(2));
+                    not.setFecha(c.getString(3));
+                    not.setFotoImagen(cargaImagen(c.getString(4)));
+                    lista.add(not);
+                } while (c.moveToNext());
+
+            }
+            return lista;
+
+
+
+        }
     public void open() {
 
         sqlDB = dbHelper.getWritableDatabase();
@@ -496,6 +526,38 @@ public class DBAdapter {
 
     }
 
+
+    //Conversion de Fotos
+    public Bitmap cargaImagen(String ruta){
+
+
+        URL imageUrl = null;
+        HttpURLConnection conn = null;
+        Bitmap imagen=null;
+
+        try {
+
+            imageUrl = new URL(ruta);
+            conn = (HttpURLConnection) imageUrl.openConnection();
+            conn.connect();
+
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inSampleSize = 4; // el factor de escala a minimizar la imagen, siempre es potencia de 2
+
+            imagen = BitmapFactory.decodeStream(conn.getInputStream(), new Rect(0, 0, 0, 0), options);
+
+
+
+
+        } catch (MalformedURLException e) {
+            Log.d("Ulr mal","Mal url");
+            e.printStackTrace();
+        } catch (IOException e) {
+            Log.d("Io mal","Mal io");
+            e.printStackTrace();
+        }
+        return imagen;
+    }
 
 
 }
