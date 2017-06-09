@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_prin"
+            android:icon="@mipmap/ico_home"
+            android:title="Principal" />
+
+        <item
+            android:id="@+id/nav_institucional"
+            android:icon="@mipmap/ic_univ"
+            android:title="Institucional" />
+        <item
+            android:id="@+id/_carreras"
+            android:icon="@mipmap/ic_carrera"
+            android:title="Carreras" />
+        <item
+            android:id="@+id/_residencias"
+            android:icon="@mipmap/ic_resi"
+            android:title="Residencias" />
+        <item
+            android:id="@+id/_contacto"
+            android:icon="@mipmap/ic_hubic"
+            android:title="Contacto" />
+
+    </group>
+
+
+
+</menu>
