@@ -1,6 +1,14 @@
 package com.example.usuario.ulpapp.parser;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Rect;
+import android.util.Log;
+
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 /**
  * Created by Usuario on 25/05/2017.
@@ -22,6 +30,11 @@ public class Noticia {
         this.guid = guid;
         Fecha = fecha;
         Foto = foto;
+        this.setFotoImagen();
+    }
+
+    public Noticia(){
+
     }
 
     public String getTitulo() {
@@ -76,7 +89,44 @@ public class Noticia {
         return FotoImagen;
     }
 
-    public void setFotoImagen(Bitmap fotoImagen) {
-        FotoImagen = fotoImagen;
+    //cuando se crea por primera vez
+    public void setFotoImagen() {
+        FotoImagen = cargaImagen(this.Foto);
+    }
+    //cuando viene de la base de datos
+    public void setFotoImagen(Bitmap imagen) {
+        FotoImagen =  imagen;
+    }
+
+
+    private Bitmap cargaImagen(String ruta){
+
+
+        URL imageUrl = null;
+        HttpURLConnection conn = null;
+        Bitmap imagen=null;
+
+        try {
+
+            imageUrl = new URL(ruta);
+            conn = (HttpURLConnection) imageUrl.openConnection();
+            conn.connect();
+
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inSampleSize = 4; // el factor de escala a minimizar la imagen, siempre es potencia de 2
+
+            imagen = BitmapFactory.decodeStream(conn.getInputStream(), new Rect(0, 0, 0, 0), options);
+
+
+
+
+        } catch (MalformedURLException e) {
+            Log.d("Ulr mal","Mal url");
+            e.printStackTrace();
+        } catch (IOException e) {
+            Log.d("Io mal","Mal io");
+            e.printStackTrace();
+        }
+        return imagen;
     }
 }

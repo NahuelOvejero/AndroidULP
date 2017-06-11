@@ -167,7 +167,9 @@ public class DBAdapter {
                     not.setTitulo(c.getString(1));
                     not.setDescripcion(c.getString(2));
                     not.setFecha(c.getString(3));
-                    not.setFotoImagen(cargaImagen(c.getString(4)));
+                    byte[] imagen =  c.getBlob(4);
+                    //transformamos el BLOB leido de la BD a bitmap:
+                    not.setFotoImagen(BitmapFactory.decodeByteArray(imagen, 0, imagen.length));
                     lista.add(not);
                 } while (c.moveToNext());
 
@@ -526,7 +528,7 @@ public class DBAdapter {
 
     }
 
-
+    //carga imagen convierte fotos de la URL
     //Conversion de Fotos
     public Bitmap cargaImagen(String ruta){
 
@@ -559,6 +561,11 @@ public class DBAdapter {
         return imagen;
     }
 
+    //leeImagen muestra fotos de la BD
+    public Bitmap leeImagen(){
+        Bitmap imagen=null;
+        return imagen;
+    }
 
 }
 
