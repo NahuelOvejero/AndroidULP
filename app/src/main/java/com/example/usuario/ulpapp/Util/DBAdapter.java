@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.Blob;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -113,7 +114,7 @@ public class DBAdapter {
         int id=1;
         for(Noticia it:lista){
 
-            noticiaAdapter.insert(id,it.getTitulo(),it.getDescripcion(),it.getFecha(),it.getFoto());
+            noticiaAdapter.insert(id,it.getTitulo(),it.getDescripcion(),it.getFecha(),it.getFotoImagen(),it.getFoto());
             id++;
         }
         if(lista.size()>0){return true;}
@@ -164,12 +165,12 @@ public class DBAdapter {
                 do {
                     //VERIFICAR INDICE DEL NOMBRE DE LA CARRERA EN LA TABLA
                     not = new Noticia();
-                    not.setTitulo(c.getString(1));
-                    not.setDescripcion(c.getString(2));
-                    not.setFecha(c.getString(3));
-                    byte[] imagen =  c.getBlob(4);
-                    //transformamos el BLOB leido de la BD a bitmap:
-                    not.setFotoImagen(BitmapFactory.decodeByteArray(imagen, 0, imagen.length));
+                    not.setTitulo(c.getString(0));
+                    not.setDescripcion(c.getString(1));
+                    not.setFecha(c.getString(2));
+                    byte  bl[]=c.getBlob(4);
+                    Bitmap bmp = BitmapFactory.decodeByteArray(bl, 0, bl.length);
+                    not.setFotoImagen(bmp);
                     lista.add(not);
                 } while (c.moveToNext());
 
@@ -479,6 +480,7 @@ public class DBAdapter {
             porQueEstudiarAdapter.insert(6,"Pasantías o becas de trabajo.");
             porQueEstudiarAdapter.insert(7,"Residencia Universitaria.");
         }
+
         Log.d("Mensajito","Insertó todo");
     }
     public void close() {
@@ -528,7 +530,7 @@ public class DBAdapter {
 
     }
 
-    //carga imagen convierte fotos de la URL
+
     //Conversion de Fotos
     public Bitmap cargaImagen(String ruta){
 
@@ -561,11 +563,6 @@ public class DBAdapter {
         return imagen;
     }
 
-    //leeImagen muestra fotos de la BD
-    public Bitmap leeImagen(){
-        Bitmap imagen=null;
-        return imagen;
-    }
 
 }
 
