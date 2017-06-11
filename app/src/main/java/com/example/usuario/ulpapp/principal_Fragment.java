@@ -1,10 +1,14 @@
 package com.example.usuario.ulpapp;
 
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.PermissionChecker;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -69,16 +73,20 @@ public class principal_Fragment extends Fragment {
     private void cargaEquipos() {
 
         UlpParser ulp=null;
+
         principal_Fragment.CargaTask t=new principal_Fragment.CargaTask();
         t.execute(ulp);
+
 
 
     }
 
 
-    class CargaTask extends AsyncTask<UlpParser,UlpParser,List<Noticia>> {
+
+    class CargaTask extends AsyncTask<UlpParser,ProgressDialog,List<Noticia>> {
 
         private List<Noticia> lista = null;
+        private ProgressDialog pd=new ProgressDialog(getContext(),R.style.Theme_AppCompat_Dialog);
 
         @Override
         protected List<Noticia> doInBackground(UlpParser... params) {
@@ -87,13 +95,14 @@ public class principal_Fragment extends Fragment {
             Date hoy=new Date();
             Log.d("Mes",mes+"");
             Log.d("Mes de sistema",hoy.getMonth()+"");
+
             if(hoy.getMonth()!=mes){
 
                 ((BaseApplication)getContext().getApplicationContext()).vaciarTabla();
                 params[0] = new UlpParser("http://noticias.ulp.edu.ar/rss/ultimas_rss.rss");
                 lista = params[0].parse();
             }else {
-
+               lista= ((BaseApplication)getContext().getApplicationContext()).listaNoticias();
 
             }
 
@@ -102,6 +111,20 @@ public class principal_Fragment extends Fragment {
 
             return lista;
         }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pd.setMessage("Cargando...");
+
+            pd.setCancelable(false);
+
+            pd.setProgressStyle(android.R.style.Widget_ProgressBar_Small);
+
+            pd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            pd.show();
+        }
+
 
         protected void onPostExecute(List<Noticia> lista) {
 
@@ -115,8 +138,9 @@ public class principal_Fragment extends Fragment {
                 ((BaseApplication)getContext().getApplicationContext()).insertarNoticias(listaC);
 
             }
-
+            pd.dismiss();
             cargaVista(inflater,parent,lv);
+
 
 
 

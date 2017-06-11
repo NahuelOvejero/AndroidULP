@@ -54,9 +54,15 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+//Actualizo el Frame Principal para que de entrada muestre las noticias
 
-
-
+        principal_Fragment principal=new principal_Fragment();
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(
+                R.id.relative_for_frag,
+                principal,
+                principal.getTag()
+        ).commit();
 
     }
 
