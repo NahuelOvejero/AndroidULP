@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AndroidULP.iml" filepath="$PROJECT_DIR$/AndroidULP.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ulpApp.iml" filepath="$PROJECT_DIR$/ulpApp.iml" />
     </modules>
   </component>
 </project>
