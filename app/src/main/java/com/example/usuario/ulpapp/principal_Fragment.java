@@ -117,10 +117,10 @@ public class principal_Fragment extends Fragment {
             super.onPreExecute();
             pd.setMessage("Cargando...");
 
-            pd.setCancelable(true);
+            pd.setCancelable(false);
 
             pd.setProgressStyle(android.R.style.Widget_ProgressBar_Small);
-            
+
             pd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             pd.show();
         }
