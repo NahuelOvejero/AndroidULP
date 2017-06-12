@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
+    <group
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_prin"
             android:icon="@mipmap/ico_home"
-            android:title="Principal" />
+            android:title="@string/principal" />
 
         <item
             android:id="@+id/nav_institucional"
             android:icon="@mipmap/ic_univ"
-            android:title="Institucional" />
+            android:title="@string/institucional" />
         <item
             android:id="@+id/_carreras"
             android:icon="@mipmap/ic_carrera"
-            android:title="Carreras" />
+            android:title="@string/carreras" />
+
         <item
             android:id="@+id/_residencias"
             android:icon="@mipmap/ic_resi"
-            android:title="Residencias" />
+            android:title="@string/residencias" />
         <item
             android:id="@+id/_contacto"
             android:icon="@mipmap/ic_hubic"
-            android:title="Contacto" />
+            android:title="@string/contacto" />
 
     </group>
 

@@ -1,5 +1,4 @@
 package com.example.usuario.ulpapp.Application;
-
 import android.app.Application;
 
 import java.util.ArrayList;
@@ -84,5 +83,9 @@ public class BaseApplication extends Application {
 
 
         return dbAdapter.ultimaActualizacionNoticias();
+    }
+
+    public List<Noticia> listaNoticias(){
+        return dbAdapter.listaDeNoticias();
     }
 }
