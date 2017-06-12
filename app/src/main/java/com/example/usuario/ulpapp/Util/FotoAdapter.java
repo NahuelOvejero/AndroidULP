@@ -38,7 +38,7 @@ public class FotoAdapter {
 
     public final static String CR_TABLE = "create table if not exists " + NAME + " ("
             +Columns._ID+" integer primary key autoincrement , "+ Columns.URL_FOTO + " text , " +
-            Columns.ID_CARRERA + " integer)";
+            Columns.ID_CARRERA + " integer )";
 
     public boolean insert(String urlfoto, int id_carrera) {
         ContentValues valores = new ContentValues();
