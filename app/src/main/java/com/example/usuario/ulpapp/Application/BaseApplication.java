@@ -10,6 +10,8 @@ import android.database.Cursor;
 import android.util.Log;
 
 import com.example.usuario.ulpapp.Database.model.Autoridades;
+import com.example.usuario.ulpapp.Database.model.Carrera;
+import com.example.usuario.ulpapp.Database.model.Lugar;
 import com.example.usuario.ulpapp.Database.model.Residencia;
 import com.example.usuario.ulpapp.parser.Noticia;
 
@@ -60,15 +62,7 @@ public class BaseApplication extends Application {
 
     }
 
-    public clsCarrera infoCarrera(String nombre){
-        Cursor c = dbAdapter.getDatosCarrera();
 
-        clsCarrera resultado = new clsCarrera();
-
-
-
-        return resultado;
-    }
     public void insertarNoticias(List<Noticia> lista){
         if(dbAdapter.insertarNoticias(lista)){
             Log.d("Resultado","Okkkk");}
@@ -115,6 +109,73 @@ public class BaseApplication extends Application {
         return dbAdapter.getFotosResi();
     }
 
+    public ArrayList<String>getRequisitosInscripcion(){
+        return dbAdapter.getRequisitosInscripcion();
+    }
+    //métodos Gestión Empresarial
+    public Carrera getGestionEmp(){
+        return dbAdapter.getCarrera(1);
+    }
+    public Lugar getLugarEmp(){
+        return  dbAdapter.getLugar(1);
+    }
+    public ArrayList<String> getCompetenteEnEmp(){
+        return dbAdapter.getCompetente(1);
+    }
+    public ArrayList<String> getProfesionalQueEmp(){
+        return dbAdapter.getProfesionalQue(1);
+    }
+    public ArrayList<String> getFotoEmp(){
+        return dbAdapter.getFotos(1);
+    }
+    //métodos Softw
+    public Carrera getSoft(){
+        return dbAdapter.getCarrera(2);
+    }
+    public Lugar getLugarSoft(){
+        return  dbAdapter.getLugar(2);
+    }
+    public ArrayList<String> getCompetenteEnSoft(){
+        return dbAdapter.getCompetente(2);
+    }
+    public ArrayList<String> getProfesionalQueSoft(){
+        return dbAdapter.getProfesionalQue(2);
+    }
+    public ArrayList<String> getFotoSoft(){
+        return dbAdapter.getFotos(2);
+    }
+    //métodos Turismo
+    public Carrera getTur(){
+        return dbAdapter.getCarrera(3);
+    }
+    public Lugar getLugarTur(){
+        return  dbAdapter.getLugar(3);
+    }
+    public ArrayList<String> getCompetenteEnTur(){
+        return dbAdapter.getCompetente(3);
+    }
+    public ArrayList<String> getProfesionalQueTur(){
+        return dbAdapter.getProfesionalQue(3);
+    }
+    public ArrayList<String> getFotoTur(){
+        return dbAdapter.getFotos(3);
+    }
+    //métodos Guía Turismo
+    public Carrera getGuiaTur(){
+        return dbAdapter.getCarrera(4);
+    }
+    public Lugar getLugarGuiaTur(){
+        return  dbAdapter.getLugar(4);
+    }
+    public ArrayList<String> getCompetenteEnGuiaTur(){
+        return dbAdapter.getCompetente(4);
+    }
+    public ArrayList<String> getProfesionalQueGuiaTur(){
+        return dbAdapter.getProfesionalQue(4);
+    }
+    public ArrayList<String> getFotoGuiaTur(){
+        return dbAdapter.getFotos(4);
+    }
     public List<Noticia> listaNoticias(){
         return dbAdapter.listaDeNoticias();
     }

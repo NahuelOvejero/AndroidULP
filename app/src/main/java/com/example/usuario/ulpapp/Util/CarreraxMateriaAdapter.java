@@ -11,6 +11,15 @@ import android.provider.BaseColumns;
 public class CarreraxMateriaAdapter {
     private static final String NAME="CarreraxMateria";
     private SQLiteDatabase sqlDB;
+    public static String getName(){
+        return  NAME;
+    }
+    public static String getColumnIdMat(){
+        return Columns._ID;
+    }
+    public static String getColumnIdCarr(){
+        return Columns.IDCARRERA;
+    }
     public CarreraxMateriaAdapter(SQLiteDatabase sqlDB){
         this.sqlDB=sqlDB;
     }

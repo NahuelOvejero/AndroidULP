@@ -40,9 +40,9 @@ public class CarreraAdapter {
         String[] whereArgs={String.valueOf(Id)};
        return sqlDB.delete(NAME,whereClause,whereArgs)>0;
     }
-    public Cursor getCarreras(){
+    public Cursor getCarrera(int IdCarrera){
         String [] col={Columns.TITULO,Columns.DURACION};
-        return  sqlDB.query(NAME,col,null,null,null,null,null);
+        return  sqlDB.query(NAME,col,Columns._ID+"="+IdCarrera,null,null,null,null);
     }
     public static String getColumnId(){
         return Columns._ID;

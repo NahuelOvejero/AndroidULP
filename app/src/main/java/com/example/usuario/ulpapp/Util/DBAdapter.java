@@ -17,7 +17,9 @@ import android.support.annotation.DrawableRes;
 import android.util.Log;
 
 import com.example.usuario.ulpapp.Database.model.Autoridades;
+import com.example.usuario.ulpapp.Database.model.Carrera;
 import com.example.usuario.ulpapp.Database.model.Lugar;
+import com.example.usuario.ulpapp.Database.model.Materia;
 import com.example.usuario.ulpapp.Database.model.Residencia;
 import com.example.usuario.ulpapp.parser.Noticia;
 
@@ -102,13 +104,15 @@ public class DBAdapter {
     public boolean booleaninsertPerfil(){
 
     }*/
-    public Cursor joinCarreraLugar(int IdCarrera){
+
+    public Lugar getLugar(int IdCarrera){
         String TC=CarreraAdapter.getName();
         String TL=LugarAdapter.getName();
-        String query= "Select Telefono,Latitud,Longitud,Direccion,Titulo,Duracion from "+TC+" inner join "+ TL+" on "+TL+"."+ LugarAdapter.getColumnId()+"="+TC+".Id_lugar_cursado where "+CarreraAdapter.getColumnId()+"=?";
-        return sqlDB.rawQuery(query,new String[]{String.valueOf(IdCarrera)});}
-    public boolean insertCarreraxMateria(int id,int carreraID){
-        return carreraxMateriaAdapter.insert(id,carreraID);
+        String query= "Select Telefono,Latitud,Longitud,Direccion from "+TC+" inner join "+ TL+" on "+TL+"."+ LugarAdapter.getColumnId()+"="+TC+".Id_lugar_cursado where "+CarreraAdapter.getColumnId()+"=?";
+        Cursor l= sqlDB.rawQuery(query,new String[]{String.valueOf(IdCarrera)});
+        l.moveToFirst();
+        Lugar nLugar=new Lugar(l.getString(l.getColumnIndex("Direccion")),l.getString(l.getColumnIndex("Telefono")),l.getDouble(l.getColumnIndex("Latitud")),l.getDouble(l.getColumnIndex("Longitud")));
+        return nLugar;
     }
 
 
@@ -534,6 +538,7 @@ public class DBAdapter {
             fotoAdapter.insert("@res/drawable/carreras/guia-turismo.jpg",4);
             fotoAdapter.insert("@res/drawable/residencias/residencia.jpg",0);
             fotoAdapter.insert("@res/drawable/residencias/Residencias2.jpg",0);
+            fotoAdapter.insert("@res/drawable/residencias/Residencia3.pjg",0);
         }
 
     }
@@ -646,14 +651,7 @@ public class DBAdapter {
         }
         return documentacion;
     }
-    public Lugar getLugar(int IdLugar){
-        Cursor l=lugarAdapter.getLugar(IdLugar);
-        if(l.moveToFirst()){
-            Lugar nLugar=new Lugar(l.getString(l.getColumnIndex("Direccion")),l.getString(l.getColumnIndex("Telefono")),l.getDouble(l.getColumnIndex("Latitud")),l.getDouble(l.getColumnIndex("Longitud")));
-            return nLugar;
-        }
-        return null;
-    }
+
     public String getMisionUlp(){
         Cursor c=misionULPAdapter.getMision();
         c.moveToFirst();
@@ -703,6 +701,22 @@ public class DBAdapter {
         }
         return requisitos;
     }
+    public ArrayList<Materia> getMaterias(int idCarrera){
+        String TC=CarreraAdapter.getName();
+        String TM=MateriaAdapter.getName();
+        String TCxM=CarreraxMateriaAdapter.getName();
+        String query="Select Nombre,Año from "+ TC+ " inner join "+ TCxM +" on "+TC+"."+CarreraAdapter.getColumnId()+"="+TCxM+"."+CarreraxMateriaAdapter.getColumnIdCarr()+" inner join "+ TM +" on "+TM+"."+MateriaAdapter.getColumnId()+"="+CarreraxMateriaAdapter.getColumnIdMat()+ " where "+CarreraAdapter.getColumnId()+"=?" ;
+        Cursor c= sqlDB.rawQuery(query,new String[]{String.valueOf(idCarrera)});
+        ArrayList<Materia> materias=new ArrayList<>();
+        c.moveToFirst();
+        do{
+            materias.add(new Materia(c.getString(c.getColumnIndex("Nombre")),c.getInt(c.getColumnIndex("Año"))));
+        }while(c.moveToNext());
+        return materias;
+    }
+    public boolean insertCarreraxMateria(int id,int carreraID){
+        return carreraxMateriaAdapter.insert(id,carreraID);
+    }
     public Residencia getResidencia(){
         Cursor c=residenciaAdapter.getResidencia();
         return new Residencia(c.getString(c.getColumnIndex("Descripcion")),c.getString(c.getColumnIndex("Cupo")),c.getString(c.getColumnIndex("Contacto")),c.getString(c.getColumnIndex("URL_ficha_ingreso")),c.getString(c.getColumnIndex("URL_declaracion_jurada")));
@@ -733,6 +747,23 @@ public class DBAdapter {
         }
         return fotos;
     }
+    public ArrayList<String> getFotos(int IdCarrera){
+        ArrayList<String> fotos=new ArrayList<>();
+        Cursor c= fotoAdapter.getFotos(IdCarrera);
+        if(c.moveToFirst())
+        {
+            do {
+                fotos.add(c.getString(c.getColumnIndex("URL_foto")));
+            }while(c.moveToNext());
+        }
+        return fotos;
+    }
+    public Carrera getCarrera(int IdCarrera){
+        Cursor c=carreraAdapter.getCarrera(IdCarrera);
+        c.moveToFirst();
+        return new Carrera(c.getString(c.getColumnIndex("Titulo")),c.getString(c.getColumnIndex("Descripcion")),c.getFloat(c.getColumnIndex("Duracion")));
+    }
+
     //Conversion de Fotos
     public Bitmap cargaImagen(String ruta){
 
