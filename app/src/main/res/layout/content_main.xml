@@ -10,11 +10,11 @@
     android:id="@+id/relative_for_frag">
 
 
-
         <ImageView
             android:id="@+id/imageView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
             app:srcCompat="@mipmap/cabezera_main"
             tools:ignore="ContentDescription" />
 
@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imageView4"
-         />
+            />
 
 
 

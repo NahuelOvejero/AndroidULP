@@ -4,6 +4,7 @@ package com.example.usuario.ulpapp;
 import android.content.pm.ActivityInfo;
 
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -54,9 +55,15 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+//Actualizo el Frame Principal para que de entrada muestre las noticias
 
-
-
+        principal_Fragment principal=new principal_Fragment();
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(
+                R.id.relative_for_frag,
+                principal,
+                principal.getTag()
+        ).commit();
 
     }
 
@@ -115,8 +122,9 @@ public class MainActivity extends AppCompatActivity
             ).commit();
 
             // Handle the camera action
-        } else if (id == R.id._carreras) {
+        } else if (id == R.id._desarrollo) {
             carrera_Fragment carreras=new carrera_Fragment();
+            carrera_Fragment.setParameter("Desarrollo de Software");
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(
                     R.id.relative_for_frag,
@@ -149,6 +157,33 @@ public class MainActivity extends AppCompatActivity
                     R.id.relative_for_frag,
                     principal,
                     principal.getTag()
+            ).commit();
+        }else if (id == R.id._gestion) {
+            carrera_Fragment carreras=new carrera_Fragment();
+            carrera_Fragment.setParameter("Gestion Empresarial");
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(
+                    R.id.relative_for_frag,
+                    carreras,
+                    carreras.getTag()
+            ).commit();
+        }else if (id == R.id._turismo) {
+            carrera_Fragment carreras=new carrera_Fragment();
+            carrera_Fragment.setParameter("Tuismo");
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(
+                    R.id.relative_for_frag,
+                    carreras,
+                    carreras.getTag()
+            ).commit();
+        }else if (id == R.id._guiaT) {
+            carrera_Fragment carreras=new carrera_Fragment();
+            carrera_Fragment.setParameter("Guia Turismo");
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(
+                    R.id.relative_for_frag,
+                    carreras,
+                    carreras.getTag()
             ).commit();
 
 

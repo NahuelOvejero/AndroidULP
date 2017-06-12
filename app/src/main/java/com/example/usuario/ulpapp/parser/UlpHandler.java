@@ -83,11 +83,9 @@ public class UlpHandler extends DefaultHandler{
                noticia.setFecha(sbText.toString().trim());
 
             }  else if (localName.equals("img")) {
-
-
-
-                        noticia.setFotoImagen(cargaImagen("http://noticias.ulp.edu.ar/img/img_portadas/"+sbText.toString().trim()));
-                        noticia.setFoto("http://noticias.ulp.edu.ar/img/img_portadas/"+sbText.toString().trim());
+                //Verificar si existe en la base de datos.
+                noticia.setFotoImagen(cargaImagen("http://noticias.ulp.edu.ar/img/img_portadas/"+sbText.toString().trim()));
+                noticia.setFoto("http://noticias.ulp.edu.ar/img/img_portadas/"+sbText.toString().trim());
 
 
             }else if (localName.equals("item")) {
@@ -97,6 +95,7 @@ public class UlpHandler extends DefaultHandler{
             sbText.setLength(0);
         }
     }
+
 
     public Bitmap cargaImagen(String ruta){
 
@@ -128,4 +127,6 @@ public class UlpHandler extends DefaultHandler{
         }
         return imagen;
     }
+
+
 }

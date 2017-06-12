@@ -1,6 +1,14 @@
 package com.example.usuario.ulpapp.parser;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Rect;
+import android.util.Log;
+
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 /**
  * Created by Usuario on 25/05/2017.
@@ -22,7 +30,11 @@ public class Noticia {
         this.guid = guid;
         Fecha = fecha;
         Foto = foto;
+
     }
+
+
+    public Noticia(){}
 
     public String getTitulo() {
         return titulo;
@@ -76,7 +88,11 @@ public class Noticia {
         return FotoImagen;
     }
 
-    public void setFotoImagen(Bitmap fotoImagen) {
-        FotoImagen = fotoImagen;
+
+
+    public void setFotoImagen(Bitmap imagen) {
+        FotoImagen =  imagen;
     }
+
+
 }

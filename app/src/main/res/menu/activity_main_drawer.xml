@@ -11,10 +11,11 @@
             android:id="@+id/nav_institucional"
             android:icon="@mipmap/ic_univ"
             android:title="Institucional" />
-        <item
+        <!-- <item
             android:id="@+id/_carreras"
             android:icon="@mipmap/ic_carrera"
-            android:title="Carreras" />
+            android:title="Carreras" />-->
+
         <item
             android:id="@+id/_residencias"
             android:icon="@mipmap/ic_resi"
@@ -23,6 +24,34 @@
             android:id="@+id/_contacto"
             android:icon="@mipmap/ic_hubic"
             android:title="Contacto" />
+
+        <item
+
+
+            android:title="Carreras"
+            android:icon="@mipmap/ic_carrera">
+            <menu>
+                <item
+
+
+                    android:id="@+id/_gestion"
+                    android:title="Gestion Empresarial" />
+
+                <item
+
+                    android:id="@+id/_turismo"
+                    android:title="Turismo" />
+                <item
+
+                    android:id="@+id/_guiaT"
+                    android:title="Guia de Turismo" />
+                <item
+
+                    android:id="@+id/_desarrollo"
+                    android:title="Desarrollo de Software" />
+            </menu>
+        </item>
+
 
     </group>
 
