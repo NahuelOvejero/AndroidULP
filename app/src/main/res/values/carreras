@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="lista_carreras">
+        <item>Desarrollo de Software</item>
+        <item>Gestión Empresarial</item>
+        <item>Turismo</item>
+        <item>Guía de Turismo</item>
+    </string-array>
+</resources>
