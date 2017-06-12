@@ -85,8 +85,4 @@ public class BaseApplication extends Application {
 
         return dbAdapter.ultimaActualizacionNoticias();
     }
-
-    public List<Noticia> listaNoticias(){
-        return dbAdapter.listaDeNoticias();
-    }
 }
