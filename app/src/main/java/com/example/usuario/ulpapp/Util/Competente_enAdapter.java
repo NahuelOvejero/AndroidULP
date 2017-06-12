@@ -1,6 +1,7 @@
 package com.example.usuario.ulpapp.Util;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
@@ -40,6 +41,10 @@ public class Competente_enAdapter {
     }
     public boolean isEmpty(){
         return sqlDB.query(NAME,COLUMNS,null,null,null,null,null).getCount()==0;
+    }
+    public Cursor getCompetente(int IdCarrera){
+        String[] col={Columns.DESCRIPCION};
+        return sqlDB.query(NAME,col,Columns.IDCARRERA+"="+IdCarrera,null,null,null,null);
     }
 
 }
