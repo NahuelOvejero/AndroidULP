@@ -1,6 +1,7 @@
 package com.example.usuario.ulpapp.Util;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
@@ -40,5 +41,9 @@ public class Profesional_queAdapter {
         values.put(Columns.DESCRIPCION,descr);
         values.put(Columns.IDCARRERA,IdCarrera);
         return sqlDB.insert(NAME,null,values)>0;
+    }
+    public Cursor getProfesional(int IdCarrera){
+        String[] col={Columns.DESCRIPCION};
+        return sqlDB.query(NAME,col,Columns.IDCARRERA+"="+IdCarrera,null,null,null,null);
     }
 }

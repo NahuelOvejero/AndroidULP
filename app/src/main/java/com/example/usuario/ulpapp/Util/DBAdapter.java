@@ -24,7 +24,6 @@ import java.net.URL;
 import java.sql.Blob;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -51,7 +50,11 @@ public class DBAdapter {
     private  ResidenciaAdapter residenciaAdapter;
     private PorQueEstudiarAdapter porQueEstudiarAdapter;
     private NoticiaAdapter noticiaAdapter;
-
+    private AcercaULPAdapter acercaULPAdapter;
+    private AutoridadesULPAdapter autoridadesULPAdapter;
+    private MisionULPAdapter misionULPAdapter;
+    private VisionULPAdapter visionULPAdapter;
+    private ValoresULPAdapter valoresULPAdapter;
 
     // DEFINIR LOS ADAPTERS DE CADA TABLA
 
@@ -124,7 +127,6 @@ public class DBAdapter {
     public void vaciarTablaNoticia(){
         noticiaAdapter.vaciarTabla();
     }
-
     public int ultimaActualizacionNoticias(){
         if(!noticiaAdapter.isEmpty() &&noticiaAdapter.noticia(1)!=null){
             Log.d("Fechas","Fechass");
@@ -199,6 +201,11 @@ public class DBAdapter {
         residenciaAdapter=new ResidenciaAdapter(sqlDB);
         porQueEstudiarAdapter=new PorQueEstudiarAdapter(sqlDB);
         noticiaAdapter=new NoticiaAdapter(sqlDB);
+        acercaULPAdapter=new AcercaULPAdapter(sqlDB);
+        autoridadesULPAdapter=new AutoridadesULPAdapter(sqlDB);
+        misionULPAdapter=new MisionULPAdapter(sqlDB);
+        visionULPAdapter=new VisionULPAdapter(sqlDB);
+        valoresULPAdapter=new ValoresULPAdapter(sqlDB);
         generarBD();
 
     }
@@ -480,13 +487,44 @@ public class DBAdapter {
             porQueEstudiarAdapter.insert(6,"Pasantías o becas de trabajo.");
             porQueEstudiarAdapter.insert(7,"Residencia Universitaria.");
         }
-
-        Log.d("Mensajito","Insertó todo");
+        if(acercaULPAdapter.isEmpty()){
+            acercaULPAdapter.insert(1,"En el año 2004 se crea por ley II-0034, la Universidad de La Punta (ULP) con el propósito de formar profesionales en áreas estratégicas asociadas al crecimiento y progreso de la provincia. \n" +
+                    "El campus universitario se encuentra ubicado en la ciudad de La Punta, a 20 kilómetros de San Luis. Su estructura edilicia fue diseñada por el reconocido arquitecto argentino Clorindo Testa, en un territorio de 51 hectáreas, 4373,00 m2.");
+            acercaULPAdapter.insert(2,"Clorindo Testa fué arquitecto y artista plástico, tomado como ejemplo a nivel mundial debido a su perfil plástico e innovador. Efectuó obras representativas de la arquitectura nacional, entre las que se destacan: la Biblioteca Nacional de la República Argentina en Buenos Aires, el Banco de Londres en Buenos Aires, el Hospital Naval y el Colegio de Escribanos de la ciudad de Buenos Aires. \n" +
+                    "El proyecto arquitectónico del campus de la ULP estuvo a cargo del equipo integrado por el arquitecto Clorindo Testa (asociados arquitectos Bompadre, Fontana) y los estudios SEPRA (arquitectos Peralta Ramos) y BMA Asociados (Arquitectos Bodas, Miani y Anger).");
+            acercaULPAdapter.insert(3,"\n" +
+                    "Clorindo Testa fué arquitecto y artista plástico, tomado como ejemplo a nivel mundial debido a su perfil plástico e innovador. Efectuó obras representativas de la arquitectura nacional, entre las que se destacan: la Biblioteca Nacional de la República Argentina en Buenos Aires, el Banco de Londres en Buenos Aires, el Hospital Naval y el Colegio de Escribanos de la ciudad de Buenos Aires. \n" +
+                    "El proyecto arquitectónico del campus de la ULP estuvo a cargo del equipo integrado por el arquitecto Clorindo Testa (asociados arquitectos Bompadre, Fontana) y los estudios SEPRA (arquitectos Peralta Ramos) y BMA Asociados (Arquitectos Bodas, Miani y Anger).\n" +
+                    "\n" +
+                    "“El campus de la Universidad de La Punta es por su propuesta general, único en el país. Es un campus universitario pensado como tal, en su totalidad, desde un principio. Esto lo destaca del resto de las universidades porque, generalmente, se van diseñando y desarrollando a medida que van creciendo las instituciones”, manifestó en una entrevista brindada en el año 2010 el reconocido arquitecto, Clorindo Testa. \n" +
+                    "Además, dijo: “Viajé a San Luis en el 2002 y nos pareció que el lugar para el campus estaba muy bien elegido y con un buen paisaje con un entorno especial. Realizamos el plan maestro general, en el que se proyectaron todos los edificios del campus de la ULP, e hicimos una galería semicubierta que une, y comunica los diferentes sectores de la universidad”");
+        }
+        if(autoridadesULPAdapter.isEmpty()){
+            autoridadesULPAdapter.insert(0,"Fernando Salino","Rector");
+            autoridadesULPAdapter.insert(1,"Ignacio Piccolo","Vicerrector y Director Campus Abierto ULP");
+            autoridadesULPAdapter.insert(2,"Gonzalo Ventura Fernandez","Secretario General");
+            autoridadesULPAdapter.insert(3,"Sandra Solivellas","Secretaria Académica");
+            autoridadesULPAdapter.insert(4,"Paulino Goméz Miranda","Secretario de Extensión");
+            autoridadesULPAdapter.insert(5,"Jorge Pereira","Secretario de Legal y Técnica");
+        }
+        if(misionULPAdapter.isEmpty()){
+            misionULPAdapter.insert(0,"Ser el instrumento provincial para darle a cada habitante de San Luis la oportunidad de formarse intelectual, social y culturalmente");
+        }
+        if(visionULPAdapter.isEmpty()){
+            visionULPAdapter.insert(0,"Ser una universidad de vanguardia, reconocida nacional e internacionalmente, por su calidad en la gestión universitaria y sus servicios de excelencia.");
+        }
+        if(valoresULPAdapter.isEmpty()){
+            valoresULPAdapter.insert(0,"Tenemos vocación de servicio, atender las necesidades de la sociedad sanluiseña es nuestra prioridad y lo hacemos con gusto y calidez.");
+            valoresULPAdapter.insert(1,"Somos serios, cumplimos nuestras promesas y compromisos siempre.");
+            valoresULPAdapter.insert(2,"Somos confiables, nos comprometemos con nuestras tareas y elegimos la excelencia como único camino para alcanzar nuestros objetivos.");
+            valoresULPAdapter.insert(3,"Buscamos el mejoramiento continuo de nuestra universidad, trabajamos con humildad y estamos abiertos a seguir aprendiendo.");
+            valoresULPAdapter.insert(4,"Fomentamos el trabajo en equipo, la participación, la innovación y la creatividad.");
+            valoresULPAdapter.insert(5,"Somos íntegros, trabajamos con ética y transparencia, procurando la equidad en todos los ámbitos en los que nos desempeñamos.");
+        }
     }
     public void close() {
         sqlDB.close();
     }
-
     public Cursor getDatosCarrera() {
         Cursor r = null ;
 //JOIN
@@ -518,6 +556,11 @@ public class DBAdapter {
             db.execSQL(ResidenciaAdapter.CR_TABLE);
             db.execSQL(PorQueEstudiarAdapter.CR_TABLE);
             db.execSQL(NoticiaAdapter.CR_TABLE);
+            db.execSQL(AcercaULPAdapter.CR_TABLE);
+            db.execSQL(MisionULPAdapter.CR_TABLE);
+            db.execSQL(ValoresULPAdapter.CR_TABLE);
+            db.execSQL(VisionULPAdapter.CR_TABLE);
+            db.execSQL(AutoridadesULPAdapter.CR_TABLE);
         }
 
         @Override
@@ -530,7 +573,139 @@ public class DBAdapter {
 
     }
 
+    //Metodos de consulta a la BD
+    public ArrayList<String> getAcercaULP(){
+        ArrayList<String> acerca=new ArrayList<>();
+       Cursor c= acercaULPAdapter.getAcerca();
+        if(c.moveToFirst())
+        {
+            do {
+                acerca.add(c.getString(c.getColumnIndex("Descripcion")));
+            }while(c.moveToNext());
+        }
+        return acerca;
+    }
+    public ArrayList<Autoridades> getAutoridades(){
+        ArrayList<Autoridades> autoridades=new ArrayList<>();
+        Cursor c= autoridadesULPAdapter.getAutoridades();
+        if(c.moveToFirst())
+        {
+            do {
+               autoridades.add(new Autoridades(c.getString(c.getColumnIndex("Nombre")),c.getString(c.getColumnIndex("Cargo"))));
+            }while(c.moveToNext());
+        }
+        return autoridades;
+    }
+    public ArrayList<String> getComodidadesResi(){
+        ArrayList<String> comodidades=new ArrayList<>();
+        Cursor c= comodidadAdapter.getComodidades();
+        if(c.moveToFirst())
+        {
+            do {
+                comodidades.add(c.getString(c.getColumnIndex("Descripcion")));
+            }while(c.moveToNext());
+        }
+        return comodidades;
+    }
+    public ArrayList<String> getCompetente(int IdCarrera){
+        ArrayList<String> competente=new ArrayList<>();
+        Cursor c= competente_enAdapter.getCompetente(IdCarrera);
+        if(c.moveToFirst())
+        {
+            do {
+                competente.add(c.getString(c.getColumnIndex("Descripcion")));
+            }while(c.moveToNext());
+        }
+        return competente;
+    }
 
+    public ArrayList<String> getDocumentacionResi(){
+        ArrayList<String> documentacion=new ArrayList<>();
+        Cursor c= comodidadAdapter.getComodidades();
+        if(c.moveToFirst())
+        {
+            do {
+                documentacion.add(c.getString(c.getColumnIndex("Descripcion")));
+            }while(c.moveToNext());
+        }
+        return documentacion;
+    }
+    public Lugar getLugar(int IdLugar){
+        Cursor l=lugarAdapter.getLugar(IdLugar);
+        if(l.moveToFirst()){
+            Lugar nLugar=new Lugar(l.getString(l.getColumnIndex("Direccion")),l.getString(l.getColumnIndex("Telefono")),l.getDouble(l.getColumnIndex("Latitud")),l.getDouble(l.getColumnIndex("Longitud")));
+            return nLugar;
+        }
+        return null;
+    }
+    public String getMisionUlp(){
+        Cursor c=misionULPAdapter.getMision();
+        c.moveToFirst();
+        return c.getString(c.getColumnIndex("Descripcion"));
+    }
+    public ArrayList<String> getObjetivoResi(){
+        ArrayList<String> objetivos=new ArrayList<>();
+        Cursor c= objetivoAdapter.getObjetivos();
+        if(c.moveToFirst())
+        {
+            do {
+                objetivos.add(c.getString(c.getColumnIndex("Descripcion")));
+            }while(c.moveToNext());
+        }
+        return objetivos;
+    }
+    public ArrayList<String> getPorQueEstudiar(){
+        ArrayList<String> porque=new ArrayList<>();
+        Cursor c= objetivoAdapter.getObjetivos();
+        if(c.moveToFirst())
+        {
+            do {
+                porque.add(c.getString(c.getColumnIndex("Descripcion")));
+            }while(c.moveToNext());
+        }
+        return porque;
+    }
+    public ArrayList<String> getProfesionalQue(int Idcarrera){
+        ArrayList<String> profesionalQue=new ArrayList<>();
+        Cursor c= profesional_queAdapter.getProfesional(Idcarrera);
+        if(c.moveToFirst())
+        {
+            do {
+                profesionalQue.add(c.getString(c.getColumnIndex("Descripcion")));
+            }while(c.moveToNext());
+        }
+        return profesionalQue;
+    }
+    public ArrayList<String> getRequisitosInscripcion(){
+        ArrayList<String> requisitos=new ArrayList<>();
+        Cursor c= requisitoAdapter.getRequisitos();
+        if(c.moveToFirst())
+        {
+            do {
+                requisitos.add(c.getString(c.getColumnIndex("Descripcion")));
+            }while(c.moveToNext());
+        }
+        return requisitos;
+    }
+    public Residencia getResidencia(){
+        Cursor c=residenciaAdapter.getResidencia();
+        return new Residencia(c.getString(c.getColumnIndex("Descripcion")),c.getString(c.getColumnIndex("Cupo")),c.getString(c.getColumnIndex("Contacto")),c.getString(c.getColumnIndex("URL_ficha_ingreso")),c.getString(c.getColumnIndex("URL_declaracion_jurada")));
+    }
+    public ArrayList<String> getValores(){
+        ArrayList<String> valores=new ArrayList<>();
+        Cursor c= valoresULPAdapter.getValores();
+        if(c.moveToFirst())
+        {
+            do {
+                valores.add(c.getString(c.getColumnIndex("Descripcion")));
+            }while(c.moveToNext());
+        }
+        return valores;
+    }
+    public String getVision(){
+        Cursor c=visionULPAdapter.getVision();
+        return c.getString(c.getColumnIndex("Descripcion"));
+    }
     //Conversion de Fotos
     public Bitmap cargaImagen(String ruta){
 

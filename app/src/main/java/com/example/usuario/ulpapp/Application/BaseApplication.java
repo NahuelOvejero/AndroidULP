@@ -9,6 +9,7 @@ import java.util.List;
 import android.database.Cursor;
 import android.util.Log;
 
+import com.example.usuario.ulpapp.Database.model.Autoridades;
 import com.example.usuario.ulpapp.parser.Noticia;
 
 import com.example.usuario.ulpapp.Util.DBAdapter;
@@ -39,9 +40,7 @@ public class BaseApplication extends Application {
         return dbAdapter.insertCarrear(Id,titulo,Duracion);
     }*/
 
-    public boolean insertarComodidad(){
-        return false;
-    }
+
 
     public ArrayList<String> nombresCarreras(){
         ArrayList<String> lista = new ArrayList<String>();
@@ -80,10 +79,24 @@ public class BaseApplication extends Application {
     }
 
     public int ultimaActualizacionNoticia(){
-
-
         return dbAdapter.ultimaActualizacionNoticias();
     }
+    public ArrayList<String> getAcercaULP(){
+        return dbAdapter.getAcercaULP();
+    }
+    public  ArrayList<Autoridades> getAutoridadesULP(){
+        return dbAdapter.getAutoridades();
+    }
+    public String getMisionULP(){
+        return dbAdapter.getMisionUlp();
+    }
+    public ArrayList<String> getValoresULP(){
+        return dbAdapter.getValores();
+    }
+    public String getVisionULP(){
+        return dbAdapter.getVision();
+    }
+}
 
     public List<Noticia> listaNoticias(){
         return dbAdapter.listaDeNoticias();

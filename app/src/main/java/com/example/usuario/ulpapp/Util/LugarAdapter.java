@@ -53,8 +53,8 @@ public class LugarAdapter {
     public boolean isEmpty(){
         return sqlDB.query(NAME,COLUMNS,null,null,null,null,null).getCount()==0;
     }
-    public Cursor getLugares(){
-        return sqlDB.query(NAME,COLUMNS,null,null,null,null,null,null);
+    public Cursor getLugar(int IdLugar){
+        return sqlDB.query(NAME,COLUMNS,Columns._ID+"="+IdLugar,null,null,null,null,null);
     }
 
 }

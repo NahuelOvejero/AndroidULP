@@ -1,6 +1,7 @@
 package com.example.usuario.ulpapp.Util;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
@@ -77,5 +78,8 @@ public class ResidenciaAdapter {
     public String[] getCOLUMNS() {
         return COLUMNS;
     }
-
+    public Cursor getResidencia(){
+        String[] col={Columns.DESCRIPCION,Columns.CUPO,Columns.CONTACTO,Columns.URL_DECLARACION_JURADA,Columns.URL_FICHA_INGRESO};
+        return sqlDB.query(NAME,col,null,null,null,null,null);
+    }
 }
