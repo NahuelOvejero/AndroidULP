@@ -10,7 +10,7 @@ import android.provider.BaseColumns;
  */
 
 public class AutoridadesULPAdapter {
-    private static final String NAME="AcercaULP";
+    private static final String NAME="AutoridadesULP";
     private SQLiteDatabase sqlDB;
     public AutoridadesULPAdapter(SQLiteDatabase sqlDB){
         this.sqlDB=sqlDB;

@@ -21,6 +21,7 @@ public class AcercaULPAdapter {
 
     }
     private static String[] COLUMNS={Columns._ID,Columns.DESCRIPCION};
+
     public final static String CR_TABLE="create table if not exists "+ NAME+" ("
             +Columns._ID+" integer primary key autoincrement, "+Columns.DESCRIPCION +" text)";
     public boolean insert (int IdAcerca,String descr){

@@ -10,7 +10,7 @@ import android.provider.BaseColumns;
  */
 
 public class VisionULPAdapter {
-    private static final String NAME="AcercaULP";
+    private static final String NAME="VisionULP";
     private SQLiteDatabase sqlDB;
     public VisionULPAdapter(SQLiteDatabase sqlDB){
         this.sqlDB=sqlDB;

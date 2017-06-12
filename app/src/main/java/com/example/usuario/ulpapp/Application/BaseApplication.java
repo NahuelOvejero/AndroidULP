@@ -93,10 +93,11 @@ public class BaseApplication extends Application {
     public ArrayList<String> getValoresULP(){
         return dbAdapter.getValores();
     }
+
     public String getVisionULP(){
         return dbAdapter.getVision();
     }
-}
+
 
     public List<Noticia> listaNoticias(){
         return dbAdapter.listaDeNoticias();

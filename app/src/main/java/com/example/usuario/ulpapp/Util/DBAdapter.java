@@ -15,6 +15,9 @@ import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.util.Log;
 
+import com.example.usuario.ulpapp.Database.model.Autoridades;
+import com.example.usuario.ulpapp.Database.model.Lugar;
+import com.example.usuario.ulpapp.Database.model.Residencia;
 import com.example.usuario.ulpapp.parser.Noticia;
 
 import java.io.IOException;
@@ -24,6 +27,7 @@ import java.net.URL;
 import java.sql.Blob;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -561,6 +565,7 @@ public class DBAdapter {
             db.execSQL(ValoresULPAdapter.CR_TABLE);
             db.execSQL(VisionULPAdapter.CR_TABLE);
             db.execSQL(AutoridadesULPAdapter.CR_TABLE);
+            Log.d("Creadas ","Creadadsdddjsjhdsh");
         }
 
         @Override

@@ -41,7 +41,7 @@ public class carrera_Fragment extends Fragment {
         text = (TextView)view.findViewById(R.id.name_carrera);
         text.setText(parameter);
 
-        return inflater.inflate(R.layout.fragment_carrera_, container, false);
+        return view;
     }
 
 }
