@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.util.Log;
 
 import com.example.usuario.ulpapp.Database.model.Autoridades;
+import com.example.usuario.ulpapp.Database.model.Residencia;
 import com.example.usuario.ulpapp.parser.Noticia;
 
 import com.example.usuario.ulpapp.Util.DBAdapter;
@@ -95,9 +96,24 @@ public class BaseApplication extends Application {
     }
 
     public String getVisionULP(){
+
         return dbAdapter.getVision();
     }
-
+    public Residencia getResidencia(){
+        return dbAdapter.getResidencia();
+    }
+    public ArrayList<String> getDocumentaciónResi(){
+        return dbAdapter.getDocumentacionResi();
+    }
+    public ArrayList<String> getComodidadesResi(){
+        return  dbAdapter.getComodidadesResi();
+    }
+    public ArrayList<String> getObjetivosResi(){
+        return dbAdapter.getObjetivoResi();
+    }
+    public ArrayList<String> getFotosResi(){
+        return dbAdapter.getFotosResi();
+    }
 
     public List<Noticia> listaNoticias(){
         return dbAdapter.listaDeNoticias();

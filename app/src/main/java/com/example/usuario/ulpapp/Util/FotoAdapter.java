@@ -1,6 +1,7 @@
 package com.example.usuario.ulpapp.Util;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
@@ -23,7 +24,7 @@ public class FotoAdapter {
     private class Columns implements BaseColumns {
         public final static String _ID="Id_foto";
         public final static String URL_FOTO = "URL_foto";
-        public final static String ID_CARRERA = "Descripcion";
+        public final static String ID_CARRERA = "Id_carrera";
     }
 
     //
@@ -62,5 +63,7 @@ public class FotoAdapter {
     public String[] getCOLUMNS() {
         return COLUMNS;
     }
-
+    public Cursor getFotos(int IdCarrera){
+        return sqlDB.query(NAME,COLUMNS,Columns.ID_CARRERA+"="+IdCarrera,null,null,null,null,null);
+    }
 }

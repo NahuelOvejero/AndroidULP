@@ -13,6 +13,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;
+import android.support.annotation.DrawableRes;
 import android.util.Log;
 
 import com.example.usuario.ulpapp.Database.model.Autoridades;
@@ -24,6 +25,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.Array;
 import java.sql.Blob;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -525,6 +527,15 @@ public class DBAdapter {
             valoresULPAdapter.insert(4,"Fomentamos el trabajo en equipo, la participación, la innovación y la creatividad.");
             valoresULPAdapter.insert(5,"Somos íntegros, trabajamos con ética y transparencia, procurando la equidad en todos los ámbitos en los que nos desempeñamos.");
         }
+        if(fotoAdapter.isEmpty()){
+            fotoAdapter.insert("@res/drawable/carreras/empresarial.jpg",1);
+            fotoAdapter.insert("@res/drawable/carreras/software.jpg",2);
+            fotoAdapter.insert("@res/drawable/carreras/turismo.jpg",3);
+            fotoAdapter.insert("@res/drawable/carreras/guia-turismo.jpg",4);
+            fotoAdapter.insert("@res/drawable/residencias/residencia.jpg",0);
+            fotoAdapter.insert("@res/drawable/residencias/Residencias2.jpg",0);
+        }
+
     }
     public void close() {
         sqlDB.close();
@@ -710,6 +721,17 @@ public class DBAdapter {
     public String getVision(){
         Cursor c=visionULPAdapter.getVision();
         return c.getString(c.getColumnIndex("Descripcion"));
+    }
+    public ArrayList<String> getFotosResi(){
+        ArrayList<String> fotos=new ArrayList<>();
+        Cursor c= fotoAdapter.getFotos(0);
+        if(c.moveToFirst())
+        {
+            do {
+                fotos.add(c.getString(c.getColumnIndex("URL_foto")));
+            }while(c.moveToNext());
+        }
+        return fotos;
     }
     //Conversion de Fotos
     public Bitmap cargaImagen(String ruta){
