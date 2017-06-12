@@ -1,5 +1,4 @@
 package com.example.usuario.ulpapp.Application;
-
 import android.app.Application;
 
 import java.util.ArrayList;
