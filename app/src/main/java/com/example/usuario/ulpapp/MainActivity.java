@@ -1,6 +1,7 @@
 package com.example.usuario.ulpapp;
 
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 
 import android.os.Bundle;
@@ -42,8 +43,12 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                emailIntent.putExtra(Intent.EXTRA_EMAIL, "lmercado@ulp.edu.ar");
+                emailIntent.setType("message/rfc822");
+                startActivity(Intent.createChooser(emailIntent, "Email "));
+                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                  //      .setAction("Action", null).show();
             }
         });
 
