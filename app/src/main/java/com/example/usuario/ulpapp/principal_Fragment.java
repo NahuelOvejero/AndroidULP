@@ -11,7 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.PermissionChecker;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,7 +71,7 @@ public class principal_Fragment extends Fragment {
 
                 if(mLastFirstVisibleItem<firstVisibleItem && down==-1)
                 {
-                    Log.i("SCROLLING down",mLastFirstVisibleItem+"");
+
                     ImageView im=(ImageView)vi.findViewById(R.id.LogoEstaticoFragmento);
                     ImageView main= (ImageView) parent.findViewById(R.id.LogoEstaticoMain);
                     main.setVisibility(View.INVISIBLE);
@@ -85,7 +85,7 @@ public class principal_Fragment extends Fragment {
                 }
                 if(mLastFirstVisibleItem>firstVisibleItem && up==-1)
                 {
-                    Log.i("SCROLLING UP",mLastFirstVisibleItem+"");
+
 
                     ImageView im=(ImageView)vi.findViewById(R.id.LogoEstaticoFragmento);
                     ImageView main= (ImageView) parent.findViewById(R.id.LogoEstaticoMain);
@@ -191,8 +191,7 @@ public class principal_Fragment extends Fragment {
             pd.dismiss();
             cargaVista(inflater, parent, lv);
             Residencia res= ((BaseApplication) getContext().getApplicationContext()).getResidencia();
-            Log.d("Descripción",res.getDescripcion());
-            Log.d("Cupo",res.getCupo());
+
 
         }
 

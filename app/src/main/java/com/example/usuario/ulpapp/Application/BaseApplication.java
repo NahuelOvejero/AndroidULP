@@ -9,7 +9,7 @@ import java.util.List;
 import android.content.Context;
 import android.database.Cursor;
 
-import android.util.Log;
+
 
 import com.example.usuario.ulpapp.Database.model.Autoridades;
 import com.example.usuario.ulpapp.Database.model.Carrera;
@@ -67,7 +67,7 @@ public class BaseApplication extends Application {
 
     public void insertarNoticias(List<Noticia> lista){
         if(dbAdapter.insertarNoticias(lista)){
-            Log.d("Resultado","Okkkk");}
+            }
 
 
     }

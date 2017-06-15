@@ -14,7 +14,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.support.annotation.DrawableRes;
-import android.util.Log;
+
 
 import com.example.usuario.ulpapp.Database.model.Autoridades;
 import com.example.usuario.ulpapp.Database.model.Carrera;
@@ -139,7 +139,7 @@ public class DBAdapter {
     }
     public int ultimaActualizacionNoticias(){
         if(!noticiaAdapter.isEmpty() &&noticiaAdapter.noticia(1)!=null){
-            Log.d("Fechas","Fechass");
+
             String fecha=null;
             Cursor c=noticiaAdapter.noticia(1);
             if(c.moveToFirst()){
@@ -581,7 +581,7 @@ public class DBAdapter {
             db.execSQL(ValoresULPAdapter.CR_TABLE);
             db.execSQL(VisionULPAdapter.CR_TABLE);
             db.execSQL(AutoridadesULPAdapter.CR_TABLE);
-            Log.d("Creadas ","Creadadsdddjsjhdsh");
+
         }
 
         @Override
@@ -664,7 +664,7 @@ public class DBAdapter {
         {
             do {
                 objetivos.add(c.getString(c.getColumnIndex("Descripcion")));
-                Log.d("Objetivos ",c.getString(c.getColumnIndex("Descripcion")));
+
             }while(c.moveToNext());
         }
         return objetivos;
@@ -793,10 +793,10 @@ public class DBAdapter {
 
 
         } catch (MalformedURLException e) {
-            Log.d("Ulr mal","Mal url");
+
             e.printStackTrace();
         } catch (IOException e) {
-            Log.d("Io mal","Mal io");
+
             e.printStackTrace();
         }
         return imagen;
