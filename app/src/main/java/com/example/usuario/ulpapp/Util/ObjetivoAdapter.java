@@ -42,7 +42,7 @@ public class ObjetivoAdapter {
         ContentValues valores = new ContentValues();
         valores.put(Columns._ID,id);
         valores.put(Columns.DESCRIPCION,descripcion);
-        valores.put(Columns.DESCRIPCION,idResidencia);
+        valores.put(Columns._IDRESIDENCIA,idResidencia);
         return sqlDB.insert(NAME, null, valores) > 0;
     }
 
@@ -61,7 +61,7 @@ public class ObjetivoAdapter {
     }
     public Cursor getObjetivos(){
         String[] col={Columns.DESCRIPCION};
-        return sqlDB.query(NAME,COLUMNS,null,null,null,null,null);
+        return sqlDB.query(NAME,col,null,null,null,null,null);
     }
     public boolean isEmpty(){
         return sqlDB.query(NAME,COLUMNS,null,null,null,null,null).getCount()==0;

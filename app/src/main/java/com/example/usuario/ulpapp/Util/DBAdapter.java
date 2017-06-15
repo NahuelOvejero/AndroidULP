@@ -448,8 +448,8 @@ public class DBAdapter {
             competente_enAdapter.insert(22,"Asesoramiento en la planificación de nuevos circuitos turísticos.",4);
         }
         if(residenciaAdapter.isEmpty()){
-            residenciaAdapter.insert(1,"La Universidad de La Punta, reglamenta un Sistema de Residencias Estudiantiles, con la meta de promocionar y facilitar el estudio de las diferentes carreras y tecnicaturas dictadas por esta Universidad. \n" +
-                    "NOTA: Para acceder al sistema de residencias Universitarias, las solicitudes formales deberán ser solicitadas a las direcciones de las respectivas unidades académicas. ","Disponibilidad sujeta a cupo","CONTACTO DE RESIDENCIAS \n" +
+            residenciaAdapter.insert(1,"La Universidad de La Punta, reglamenta un Sistema de Residencias Estudiantiles, con la meta de promocionar y facilitar el estudio de las diferentes carreras y tecnicaturas dictadas por esta Universidad."
+                    ,"Disponibilidad sujeta a cupo","CONTACTO DE RESIDENCIAS \n" +
                     "0266 4452000 - int. 6106","","http://admin.ulp.edu.ar/ULPWeb/Contenido/PaginaULP35/File/Ficha%20ingreso.pdf","http://admin.ulp.edu.ar/ULPWeb/Contenido/PaginaULP35/File/Declaracin%20jurada.pdf");
         }
         if(documentacionAdapter.isEmpty()){
@@ -642,7 +642,7 @@ public class DBAdapter {
 
     public ArrayList<String> getDocumentacionResi(){
         ArrayList<String> documentacion=new ArrayList<>();
-        Cursor c= comodidadAdapter.getComodidades();
+        Cursor c= documentacionAdapter.getDocumentacion();
         if(c.moveToFirst())
         {
             do {

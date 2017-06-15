@@ -150,7 +150,10 @@ public class MainActivity extends AppCompatActivity
             ).commit();
 
         } else if (id == R.id._residencias) {
-
+            ImageView imagen=(ImageView)findViewById(R.id.imageView4);
+            ListView texto=(ListView)findViewById(R.id.listView);
+            imagen.setVisibility(View.INVISIBLE);
+            texto.setVisibility(View.INVISIBLE);
 
             resi_Fragment residencias=new resi_Fragment();
             FragmentManager manager = getSupportFragmentManager();
