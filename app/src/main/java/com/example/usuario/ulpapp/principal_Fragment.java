@@ -5,7 +5,9 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.PermissionChecker;
@@ -36,6 +38,7 @@ public class principal_Fragment extends Fragment {
     private LayoutInflater inflater;
     private ViewGroup parent;
     private ListView lv;
+
 
     private List<Noticia> listaC=new ArrayList<Noticia>();
     public principal_Fragment() {
@@ -75,9 +78,7 @@ public class principal_Fragment extends Fragment {
         UlpParser ulp=null;
 
         principal_Fragment.CargaTask t=new principal_Fragment.CargaTask();
-        t.execute(ulp);
-
-
+       t.execute(ulp);
 
     }
 
@@ -85,29 +86,29 @@ public class principal_Fragment extends Fragment {
 
     class CargaTask extends AsyncTask<UlpParser,ProgressDialog,List<Noticia>> {
 
+
+        private ProgressDialog pd = new ProgressDialog(getContext(), R.style.Theme_AppCompat_Dialog);
         private List<Noticia> lista = null;
-        private ProgressDialog pd=new ProgressDialog(getContext(),R.style.Theme_AppCompat_Dialog);
+
 
         @Override
         protected List<Noticia> doInBackground(UlpParser... params) {
             //Verifico el mes de a ultima actualización
-            int mes=((BaseApplication)getContext().getApplicationContext()).ultimaActualizacionNoticia();
+            int mes = ((BaseApplication) getContext().getApplicationContext()).ultimaActualizacionNoticia();
 
-            Date hoy=new Date();
-            Log.d("Mes",mes+"");
-            Log.d("Mes de sistema",hoy.getMonth()+"");
+            Date hoy = new Date();
+            //Log.d("Mes",mes+"");
+            //Log.d("Mes de sistema",hoy.getMonth()+"");
 
-            if(hoy.getMonth()!=mes){
+            if (hoy.getMonth() != mes) {
 
-                ((BaseApplication)getContext().getApplicationContext()).vaciarTabla();
+                ((BaseApplication) getContext().getApplicationContext()).vaciarTabla();
                 params[0] = new UlpParser("http://noticias.ulp.edu.ar/rss/ultimas_rss.rss");
                 lista = params[0].parse();
-            }else {
-               lista= ((BaseApplication)getContext().getApplicationContext()).listaNoticias();
+            } else {
+                lista = ((BaseApplication) getContext().getApplicationContext()).listaNoticias();
 
             }
-
-
 
 
             return lista;
@@ -116,9 +117,11 @@ public class principal_Fragment extends Fragment {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+
+
             pd.setMessage("Cargando...");
 
-           pd.setCancelable(false);
+            pd.setCancelable(false);
 
             pd.setProgressStyle(android.R.style.Widget_ProgressBar_Small);
 
@@ -130,25 +133,23 @@ public class principal_Fragment extends Fragment {
         protected void onPostExecute(List<Noticia> lista) {
 
 
-            listaC=lista;
+            listaC = lista;
             //Verifico el mes de la última actualización
-            int mes=((BaseApplication)getContext().getApplicationContext()).ultimaActualizacionNoticia();
+            int mes = ((BaseApplication) getContext().getApplicationContext()).ultimaActualizacionNoticia();
 
-            Date hoy=new Date();
-            if(hoy.getMonth()!=mes){
+            Date hoy = new Date();
+            if (hoy.getMonth() != mes) {
 
-                ((BaseApplication)getContext().getApplicationContext()).insertarNoticias(listaC);
+                ((BaseApplication) getContext().getApplicationContext()).insertarNoticias(listaC);
 
             }
             pd.dismiss();
-            cargaVista(inflater,parent,lv);
-
-
+            cargaVista(inflater, parent, lv);
 
 
         }
-    }
 
+    }
 
 
 
