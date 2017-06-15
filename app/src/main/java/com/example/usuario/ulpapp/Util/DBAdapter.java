@@ -719,7 +719,12 @@ public class DBAdapter {
     }
     public Residencia getResidencia(){
         Cursor c=residenciaAdapter.getResidencia();
-        return new Residencia(c.getString(c.getColumnIndex("Descripcion")),c.getString(c.getColumnIndex("Cupo")),c.getString(c.getColumnIndex("Contacto")),c.getString(c.getColumnIndex("URL_ficha_ingreso")),c.getString(c.getColumnIndex("URL_declaracion_jurada")));
+        Residencia res=null;
+        c.moveToFirst();
+        do{
+            res=new Residencia(c.getString(c.getColumnIndex("Descripcion")),c.getString(c.getColumnIndex("Cupo")),c.getString(c.getColumnIndex("Contacto")),c.getString(c.getColumnIndex("URL_ficha_ingreso")),c.getString(c.getColumnIndex("URL_declaracion_jurada")));
+        }while(c.moveToNext());
+        return res;
     }
     public ArrayList<String> getValores(){
         ArrayList<String> valores=new ArrayList<>();
