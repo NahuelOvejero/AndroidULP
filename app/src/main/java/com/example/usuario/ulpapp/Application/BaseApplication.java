@@ -6,7 +6,9 @@ import java.util.Date;
 import java.util.List;
 
 
+import android.content.Context;
 import android.database.Cursor;
+
 import android.util.Log;
 
 import com.example.usuario.ulpapp.Database.model.Autoridades;
@@ -96,7 +98,7 @@ public class BaseApplication extends Application {
     public Residencia getResidencia(){
         return dbAdapter.getResidencia();
     }
-    public ArrayList<String> getDocumentaciónResi(){
+    public ArrayList<String> getDocumentacionResi(){
         return dbAdapter.getDocumentacionResi();
     }
     public ArrayList<String> getComodidadesResi(){

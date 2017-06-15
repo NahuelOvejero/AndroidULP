@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -40,6 +41,7 @@ public class carrera_Fragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_carrera_, container, false);
         text = (TextView)view.findViewById(R.id.name_carrera);
         text.setText(parameter);
+
 
         return view;
     }

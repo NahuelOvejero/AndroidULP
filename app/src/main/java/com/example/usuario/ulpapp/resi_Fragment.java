@@ -49,7 +49,7 @@ public class resi_Fragment extends Fragment {
         lvDesc.setAdapter(adDesc);
 
 
-        listaDocumentacion=((BaseApplication)getContext().getApplicationContext()).getDocumentaciónResi();
+        listaDocumentacion=((BaseApplication)getContext().getApplicationContext()).getDocumentacionResi();
         ListView lvDocum= (ListView) v.findViewById(R.id.resiDocu);
         ArrayAdapter<String> adDocum=new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,listaDocumentacion);
         lvDocum.setAdapter(adDocum);

@@ -15,11 +15,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.usuario.ulpapp.Database.model.Residencia;
 import com.example.usuario.ulpapp.parser.Noticia;
 import com.example.usuario.ulpapp.parser.UlpParser;
 
@@ -47,13 +49,56 @@ public class principal_Fragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView( LayoutInflater inflater,  ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View vi=inflater.inflate(R.layout.fragment_principal_, container, false);
+        final View vi=inflater.inflate(R.layout.fragment_principal_, container, false);
         lv=(ListView) vi.findViewById(R.id.listView);
 
+        lv.setOnScrollListener(new AbsListView.OnScrollListener() {
+            private int mLastFirstVisibleItem;
+            private int up=-1;
+            private int down=-1;
 
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem,
+                                 int visibleItemCount, int totalItemCount) {
+
+                if(mLastFirstVisibleItem<firstVisibleItem && down==-1)
+                {
+                    Log.i("SCROLLING down",mLastFirstVisibleItem+"");
+                    ImageView im=(ImageView)vi.findViewById(R.id.LogoEstaticoFragmento);
+                    ImageView main= (ImageView) parent.findViewById(R.id.LogoEstaticoMain);
+                    main.setVisibility(View.INVISIBLE);
+                    im.setVisibility(View.GONE);
+                    down=0;
+                    up=-1;
+
+
+
+
+                }
+                if(mLastFirstVisibleItem>firstVisibleItem && up==-1)
+                {
+                    Log.i("SCROLLING UP",mLastFirstVisibleItem+"");
+
+                    ImageView im=(ImageView)vi.findViewById(R.id.LogoEstaticoFragmento);
+                    ImageView main= (ImageView) parent.findViewById(R.id.LogoEstaticoMain);
+                    //main.setVisibility(View.VISIBLE);
+                    im.setVisibility(View.VISIBLE);
+                    im.setAdjustViewBounds(true);
+                    up=0;
+                    down=-1;
+                }
+                mLastFirstVisibleItem=firstVisibleItem;
+
+            }
+        });
         this.inflater=inflater;
         this.parent=container;
         cargaEquipos();
@@ -145,7 +190,9 @@ public class principal_Fragment extends Fragment {
             }
             pd.dismiss();
             cargaVista(inflater, parent, lv);
-
+            Residencia res= ((BaseApplication) getContext().getApplicationContext()).getResidencia();
+            Log.d("Descripción",res.getDescripcion());
+            Log.d("Cupo",res.getCupo());
 
         }
 

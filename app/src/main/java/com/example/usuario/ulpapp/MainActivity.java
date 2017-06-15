@@ -18,9 +18,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import android.text.Layout;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -150,7 +152,7 @@ public class MainActivity extends AppCompatActivity
             ).commit();
 
         } else if (id == R.id._residencias) {
-            ImageView imagen=(ImageView)findViewById(R.id.imageView4);
+            ImageView imagen=(ImageView)findViewById(R.id.LogoEstaticoMain);
             ListView texto=(ListView)findViewById(R.id.listView);
             imagen.setVisibility(View.INVISIBLE);
             texto.setVisibility(View.INVISIBLE);
@@ -165,12 +167,13 @@ public class MainActivity extends AppCompatActivity
 
         }else if (id == R.id.nav_prin) {
             //Accedo a la imagen de cabecera y al listView ambos de Content_Main
-            ImageView imagen=(ImageView)findViewById(R.id.imageView4);
-            ListView texto=(ListView) findViewById(R.id.listView);
+            final ImageView imagen=(ImageView)findViewById(R.id.LogoEstaticoMain);
+            ListView lv=(ListView) findViewById(R.id.listView);
             //Los hago invisibles
             imagen.setVisibility(View.VISIBLE);
-            imagen.setVisibility(View.VISIBLE);
+            lv.setVisibility(View.VISIBLE);
             imagen.setAdjustViewBounds(true);
+
             principal_Fragment principal=new principal_Fragment();
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(
@@ -180,11 +183,11 @@ public class MainActivity extends AppCompatActivity
             ).commit();
         }else if (id == R.id._gestion) {
             //Accedo a la imagen de cabecera y al listView ambos de Content_Main
-            ImageView imagen=(ImageView)findViewById(R.id.imageView4);
+            ImageView imagen=(ImageView)findViewById(R.id.LogoEstaticoMain);
             ListView texto=(ListView) findViewById(R.id.listView);
             //Los hago invisibles
             imagen.setVisibility(View.INVISIBLE);
-            imagen.setVisibility(View.INVISIBLE);
+
 
             carrera_Fragment carreras=new carrera_Fragment();
             carrera_Fragment.setParameter("Gestion Empresarial");

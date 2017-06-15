@@ -664,6 +664,7 @@ public class DBAdapter {
         {
             do {
                 objetivos.add(c.getString(c.getColumnIndex("Descripcion")));
+                Log.d("Objetivos ",c.getString(c.getColumnIndex("Descripcion")));
             }while(c.moveToNext());
         }
         return objetivos;

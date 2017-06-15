@@ -61,7 +61,7 @@ public class ObjetivoAdapter {
     }
     public Cursor getObjetivos(){
         String[] col={Columns.DESCRIPCION};
-        return sqlDB.query(NAME,col,null,null,null,null,null);
+        return sqlDB.query(NAME,COLUMNS,null,null,null,null,null);
     }
     public boolean isEmpty(){
         return sqlDB.query(NAME,COLUMNS,null,null,null,null,null).getCount()==0;

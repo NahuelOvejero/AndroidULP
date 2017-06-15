@@ -119,10 +119,10 @@ public class UlpHandler extends DefaultHandler{
 
 
         } catch (MalformedURLException e) {
-            Log.d("Ulr mal","Mal url");
+            //Log.d("Ulr mal","Mal url");
             e.printStackTrace();
         } catch (IOException e) {
-            Log.d("Io mal","Mal io");
+            //Log.d("Io mal","Mal io");
             e.printStackTrace();
         }
         return imagen;

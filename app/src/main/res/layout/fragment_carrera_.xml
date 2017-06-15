@@ -12,7 +12,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:background="@android:color/holo_green_dark"
+
         android:orientation="horizontal">
 
         <TextView
