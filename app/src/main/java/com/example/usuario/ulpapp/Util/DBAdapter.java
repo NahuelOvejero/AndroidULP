@@ -92,13 +92,7 @@ public class DBAdapter {
         return lugarAdapter.insert(IdLugar,dir,tel,latitud,longitud);
     }
 
-    public boolean insertMateria(int id,String nombre,int año){
-        return materiaAdapter.insert(id,nombre,año);
-    }
 
-    public boolean insertObjetivo (int id, String des, int res){
-        return objetivoAdapter.insert(id,des,res);
-    }
 
     /*
     public boolean booleaninsertPerfil(){

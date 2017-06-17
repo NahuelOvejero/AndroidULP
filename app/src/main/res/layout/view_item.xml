@@ -28,7 +28,7 @@
         android:layout_alignParentTop="true"
         android:background="#264377"
         android:text="Large Text"
-        android:textColor="#F39E08"
+        android:textColor="#ffffff"
         android:textSize="20sp" />
 
     <TextView

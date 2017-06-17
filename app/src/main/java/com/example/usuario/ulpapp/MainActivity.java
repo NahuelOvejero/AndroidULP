@@ -199,7 +199,7 @@ public class MainActivity extends AppCompatActivity
             ).commit();
         }else if (id == R.id._turismo) {
             carrera_Fragment carreras=new carrera_Fragment();
-            carrera_Fragment.setParameter("Tuismo");
+            carrera_Fragment.setParameter("Turismo");
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(
                     R.id.relative_for_frag,
