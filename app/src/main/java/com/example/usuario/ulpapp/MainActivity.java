@@ -170,6 +170,29 @@ public class MainActivity extends AppCompatActivity
 
             carrera_Fragment carreras= new carrera_Fragment();
 
+<<<<<<< HEAD
+=======
+            carrera_Fragment carreras=new carrera_Fragment();
+            carrera_Fragment.setParameter("Gestion Empresarial");
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(
+                    R.id.relative_for_frag,
+                    carreras,
+                    carreras.getTag()
+            ).commit();
+        }else if (id == R.id._turismo) {
+            carrera_Fragment carreras=new carrera_Fragment();
+            carrera_Fragment.setParameter("Turismo");
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(
+                    R.id.relative_for_frag,
+                    carreras,
+                    carreras.getTag()
+            ).commit();
+        }else if (id == R.id._guiaT) {
+            carrera_Fragment carreras=new carrera_Fragment();
+            carrera_Fragment.setParameter("Guia Turismo");
+>>>>>>> ae26694f4d6519bed7e54c0aa17b695423e8490e
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(
                     R.id.relative_for_frag,

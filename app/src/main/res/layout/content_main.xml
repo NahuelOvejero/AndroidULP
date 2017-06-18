@@ -8,7 +8,7 @@
     tools:context="com.example.usuario.ulpapp.MainActivity"
     tools:showIn="@layout/app_bar_main"
     android:id="@+id/relative_for_frag"
-    android:background="#7ff39e08">
+    >
 
 
         <ImageView

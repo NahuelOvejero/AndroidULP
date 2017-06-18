@@ -14,7 +14,6 @@ import android.database.Cursor;
 import com.example.usuario.ulpapp.Database.model.Autoridades;
 import com.example.usuario.ulpapp.Database.model.Carrera;
 import com.example.usuario.ulpapp.Database.model.Lugar;
-import com.example.usuario.ulpapp.Database.model.Materia;
 import com.example.usuario.ulpapp.Database.model.Residencia;
 import com.example.usuario.ulpapp.parser.Noticia;
 
@@ -147,7 +146,6 @@ public class BaseApplication extends Application {
     public ArrayList<String> getFotoSoft(){
         return dbAdapter.getFotos(2);
     }
-
     //métodos Turismo
     public Carrera getTur(){
         return dbAdapter.getCarrera(3);
