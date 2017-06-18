@@ -14,6 +14,7 @@ import android.database.Cursor;
 import com.example.usuario.ulpapp.Database.model.Autoridades;
 import com.example.usuario.ulpapp.Database.model.Carrera;
 import com.example.usuario.ulpapp.Database.model.Lugar;
+import com.example.usuario.ulpapp.Database.model.Materia;
 import com.example.usuario.ulpapp.Database.model.Residencia;
 import com.example.usuario.ulpapp.parser.Noticia;
 
@@ -130,6 +131,7 @@ public class BaseApplication extends Application {
     public ArrayList<String> getFotoEmp(){
         return dbAdapter.getFotos(1);
     }
+    public ArrayList<Materia> getMateriasEmp(){return dbAdapter.getMaterias(1);}
     //métodos Softw
     public Carrera getSoft(){
         return dbAdapter.getCarrera(2);
@@ -146,6 +148,7 @@ public class BaseApplication extends Application {
     public ArrayList<String> getFotoSoft(){
         return dbAdapter.getFotos(2);
     }
+    public ArrayList<Materia> getMateriasSoft(){return dbAdapter.getMaterias(2);}
     //métodos Turismo
     public Carrera getTur(){
         return dbAdapter.getCarrera(3);
@@ -162,6 +165,7 @@ public class BaseApplication extends Application {
     public ArrayList<String> getFotoTur(){
         return dbAdapter.getFotos(3);
     }
+    public ArrayList<Materia> getMateriasTur(){return dbAdapter.getMaterias(3);}
     //métodos Guía Turismo
     public Carrera getGuiaTur(){
         return dbAdapter.getCarrera(4);
@@ -181,4 +185,5 @@ public class BaseApplication extends Application {
     public List<Noticia> listaNoticias(){
         return dbAdapter.listaDeNoticias();
     }
+    public ArrayList<Materia> getMateriaGuiaTur(){return dbAdapter.getMaterias(4);}
 }
