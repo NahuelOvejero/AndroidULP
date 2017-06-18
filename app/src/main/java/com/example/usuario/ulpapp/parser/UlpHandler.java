@@ -4,10 +4,16 @@ package com.example.usuario.ulpapp.parser;
  * Created by Usuario on 25/05/2017.
  */
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;
+import android.preference.PreferenceManager;
+import android.util.Log;
 
+
+import com.example.usuario.ulpapp.Application.BaseApplication;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -21,12 +27,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UlpHandler extends DefaultHandler{
+    private static final String PREF_IS_RUNNING ="conexion" ;
     private List<Noticia> noticias;
     private Noticia noticia;
     private StringBuilder sbText;
     public Boolean parsingError = false;
+    private Context context;
 
-
+    public UlpHandler(Context context) {
+        this.context = context;
+    }
 
     public List<Noticia> getNoticias(){
         return noticias;
@@ -40,6 +50,7 @@ public class UlpHandler extends DefaultHandler{
 
         noticias = new ArrayList<Noticia>();
         sbText = new StringBuilder();
+        Log.d("Parser","adentro");
     }
 
     @Override
@@ -93,6 +104,7 @@ public class UlpHandler extends DefaultHandler{
             }
 
             sbText.setLength(0);
+            Log.d("Procesando....","Ok");
         }
     }
 
@@ -122,8 +134,13 @@ public class UlpHandler extends DefaultHandler{
             //Log.d("Ulr mal","Mal url");
             e.printStackTrace();
         } catch (IOException e) {
-            //Log.d("Io mal","Mal io");
+            Log.d("Io mal","Mal io");
             e.printStackTrace();
+            SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+            SharedPreferences.Editor editor = pref.edit();
+
+            editor.putBoolean(PREF_IS_RUNNING, false);
+            editor.apply();
         }
         return imagen;
     }

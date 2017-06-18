@@ -91,7 +91,7 @@ public class NoticiaAdapter {
 
     public void vaciarTabla(){
 
-       // sqlDB.delete(NAME,null,null);
+       sqlDB.delete(NAME,null,null);
     }
 
 
