@@ -108,7 +108,7 @@ public class BaseApplication extends Application {
     public ArrayList<String> getObjetivosResi(){
         return dbAdapter.getObjetivoResi();
     }
-    public ArrayList<String> getFotosResi(){
+    public ArrayList<Integer> getFotosResi(){
         return dbAdapter.getFotosResi();
     }
 

@@ -528,6 +528,7 @@ public class DBAdapter {
             fotoAdapter.insert(R.drawable.software,2);
             fotoAdapter.insert(R.drawable.turismo,3);
             fotoAdapter.insert(R.drawable.guiaturismo,4);
+            fotoAdapter.insert(R.drawable.imgresi,0);
             fotoAdapter.insert(R.drawable.residencia,0);
             fotoAdapter.insert(R.drawable.residencias2,0);
             fotoAdapter.insert(R.drawable.residencia3,0);
@@ -734,13 +735,13 @@ public class DBAdapter {
         Cursor c=visionULPAdapter.getVision();
         return c.getString(c.getColumnIndex("Descripcion"));
     }
-    public ArrayList<String> getFotosResi(){
-        ArrayList<String> fotos=new ArrayList<>();
+    public ArrayList<Integer> getFotosResi(){
+        ArrayList<Integer> fotos=new ArrayList<>();
         Cursor c= fotoAdapter.getFotos(0);
         if(c.moveToFirst())
         {
             do {
-                fotos.add(c.getString(c.getColumnIndex("URL_foto")));
+                fotos.add(c.getInt(c.getColumnIndex("URL_foto")));
             }while(c.moveToNext());
         }
         return fotos;
