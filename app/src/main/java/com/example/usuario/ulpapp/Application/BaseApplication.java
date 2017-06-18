@@ -128,9 +128,11 @@ public class BaseApplication extends Application {
     public ArrayList<String> getProfesionalQueEmp(){
         return dbAdapter.getProfesionalQue(1);
     }
-    public ArrayList<String> getFotoEmp(){
-        return dbAdapter.getFotos(1);
+    public int getFotoEmp(){
+        return dbAdapter.getFoto(1);
     }
+    public ArrayList<Materia> getMateriasGestion(){return  dbAdapter.getMaterias(1);}
+
     //métodos Softw
     public Carrera getSoft(){
         return dbAdapter.getCarrera(2);
@@ -144,8 +146,8 @@ public class BaseApplication extends Application {
     public ArrayList<String> getProfesionalQueSoft(){
         return dbAdapter.getProfesionalQue(2);
     }
-    public ArrayList<String> getFotoSoft(){
-        return dbAdapter.getFotos(2);
+    public int getFotoSoft(){
+        return dbAdapter.getFoto(2);
     }
     public ArrayList<Materia> getMateriasSoft(){return dbAdapter.getMaterias(2);}
     //métodos Turismo
@@ -161,8 +163,11 @@ public class BaseApplication extends Application {
     public ArrayList<String> getProfesionalQueTur(){
         return dbAdapter.getProfesionalQue(3);
     }
-    public ArrayList<String> getFotoTur(){
-        return dbAdapter.getFotos(3);
+    public int getFotoTur(){
+        return dbAdapter.getFoto(3);
+    }
+    public ArrayList<Materia> getMateriasTurismo(){
+        return dbAdapter.getMaterias(3);
     }
     //métodos Guía Turismo
     public Carrera getGuiaTur(){
@@ -177,10 +182,33 @@ public class BaseApplication extends Application {
     public ArrayList<String> getProfesionalQueGuiaTur(){
         return dbAdapter.getProfesionalQue(4);
     }
-    public ArrayList<String> getFotoGuiaTur(){
-        return dbAdapter.getFotos(4);
+    public int getFotoGuiaTur(){
+        return dbAdapter.getFoto(4);
     }
+    public ArrayList<Materia> getMateriasGuia(){return dbAdapter.getMaterias(4);}
     public List<Noticia> listaNoticias(){
         return dbAdapter.listaDeNoticias();
+    }
+    //cabeceras
+    public int getCabeceraContacto(){
+        return dbAdapter.getFoto(5);
+    }
+    public int getCabeceraGestion(){
+        return  dbAdapter.getFoto(6);
+    }
+    public  int getCabeceraGuia(){
+        return dbAdapter.getFoto(7);
+    }
+    public int getCabeceraInstitucional(){
+        return dbAdapter.getFoto(8);
+    }
+    public int getCabeceraResi(){
+        return dbAdapter.getFoto(9);
+    }
+    public int getCabeceraSoft(){
+        return dbAdapter.getFoto(10);
+    }
+    public int getCabeceraTurismo(){
+        return dbAdapter.getFoto(11);
     }
 }

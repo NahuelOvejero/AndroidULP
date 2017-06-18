@@ -532,6 +532,14 @@ public class DBAdapter {
             fotoAdapter.insert(R.drawable.residencia,0);
             fotoAdapter.insert(R.drawable.residencias2,0);
             fotoAdapter.insert(R.drawable.residencia3,0);
+            fotoAdapter.insert(R.drawable.imgcontacto,5);
+            fotoAdapter.insert(R.drawable.imggestionemp,6);
+            fotoAdapter.insert(R.drawable.imgguia,7);
+            fotoAdapter.insert(R.drawable.imginstitucional,8);
+            fotoAdapter.insert(R.drawable.imgresi,9);
+            fotoAdapter.insert(R.drawable.imgsoftware,10);
+            fotoAdapter.insert(R.drawable.imgturismo,11);
+
         }
 
     }
@@ -699,7 +707,7 @@ public class DBAdapter {
         String TC=CarreraAdapter.getName();
         String TM=MateriaAdapter.getName();
         String TCxM=CarreraxMateriaAdapter.getName();
-        String query="Select Nombre,Año from "+ TC+ " inner join "+ TCxM +" on "+TC+"."+CarreraAdapter.getColumnId()+"="+TCxM+"."+CarreraxMateriaAdapter.getColumnIdCarr()+" inner join "+ TM +" on "+TM+"."+MateriaAdapter.getColumnId()+"="+CarreraxMateriaAdapter.getColumnIdMat()+ " where "+CarreraAdapter.getColumnId()+"=?" ;
+        String query="Select Nombre,Año from "+ TC+ " inner join "+ TCxM +" on "+TC+"."+CarreraAdapter.getColumnId()+"="+TCxM+"."+CarreraxMateriaAdapter.getColumnIdCarr()+" inner join "+ TM +" on "+TM+"."+MateriaAdapter.getColumnId()+"="+TCxM+"."+CarreraxMateriaAdapter.getColumnIdMat()+ " where "+TC+"."+CarreraAdapter.getColumnId()+"=?" ;
         Cursor c= sqlDB.rawQuery(query,new String[]{String.valueOf(idCarrera)});
         ArrayList<Materia> materias=new ArrayList<>();
         c.moveToFirst();
@@ -746,17 +754,15 @@ public class DBAdapter {
         }
         return fotos;
     }
-    public ArrayList<String> getFotos(int IdCarrera){
-        ArrayList<String> fotos=new ArrayList<>();
-        Cursor c= fotoAdapter.getFotos(IdCarrera);
-        if(c.moveToFirst())
-        {
-            do {
-                fotos.add(c.getString(c.getColumnIndex("URL_foto")));
-            }while(c.moveToNext());
-        }
-        return fotos;
+
+    public int getFoto(int Id){
+        int foto;
+        Cursor c= fotoAdapter.getFotos(Id);
+        c.moveToFirst();
+        foto=c.getInt(c.getColumnIndex("URL_foto"));
+        return foto;
     }
+
     public Carrera getCarrera(int IdCarrera){
         Cursor c=carreraAdapter.getCarrera(IdCarrera);
         c.moveToFirst();

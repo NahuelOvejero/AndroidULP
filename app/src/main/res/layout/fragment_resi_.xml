@@ -133,7 +133,7 @@
                 android:background="@android:color/white"
                 android:baselineAligned="true"
                 android:orientation="horizontal"
-                android:text="PAGO"
+                android:text="CUPO"
                 android:textColor="#264377"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"

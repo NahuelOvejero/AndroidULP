@@ -3,6 +3,7 @@ package com.example.usuario.ulpapp;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,8 +49,8 @@ public class mycarreraa extends Fragment {
         if (numcarrera==1) {
             Carrera carrera=new Carrera("Desarrollo de Software","La carrera está diseñada para permitir una rápida inserción en el ámbito laboral. Los conocimientos adquiridos le permitirán al egresado insertarse en compañías de la industria tecnológica y de otras actividades de la economía, como así también, en el ámbito gubernamental.",3);
 //DESCOMENTAR Y VER ERROR
-          //  materia1año=((BaseApplication)getContext().getApplicationContext()).getMateriasSoft();
-
+            materia1año=((BaseApplication)getContext().getApplicationContext()).getMateriasSoft();
+            
             c_titulo = (TextView) v.findViewById(R.id.nombrecar);
             c_duracion= (TextView)v.findViewById((R.id.duracion));
             c_descripcion=(TextView)v.findViewById((R.id.descripcion));
