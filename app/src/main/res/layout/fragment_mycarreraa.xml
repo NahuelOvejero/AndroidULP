@@ -1,0 +1,92 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context="com.example.usuario.ulpapp.mycarreraa">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:id="@+id/duracion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="42dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="27dp"
+        android:text="TextView"
+        android:layout_below="@+id/nombrecar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/nombrecar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="TextView"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/duracion"
+        android:layout_alignStart="@+id/duracion" />
+
+    <TextView
+        android:id="@+id/descripcion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/duracion"
+        android:layout_alignStart="@+id/duracion"
+        android:layout_below="@+id/duracion"
+        android:layout_marginTop="36dp"
+        android:paddingBottom="50dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/Mate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Materias"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/duracion"
+        android:layout_alignStart="@+id/duracion" />
+
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/pri"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingRight="97dp"
+                android:text="Primer Año" />
+
+            <TextView
+                android:id="@+id/seg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingRight="97dp"
+                android:text="Segundo Año" />
+
+            <TextView
+                android:id="@+id/ter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingRight="97dp"
+                android:text="Tercer Año" />
+
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+</LinearLayout>

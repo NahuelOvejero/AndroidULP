@@ -1,15 +1,10 @@
 package com.example.usuario.ulpapp;
 
 
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.StrictMode;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -17,17 +12,11 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
-import android.text.Layout;
-
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 
 public class MainActivity extends AppCompatActivity
@@ -132,17 +121,7 @@ public class MainActivity extends AppCompatActivity
             ).commit();
 
             // Handle the camera action
-        } else if (id == R.id._desarrollo) {
-            carrera_Fragment carreras=new carrera_Fragment();
-            carrera_Fragment.setParameter("Desarrollo de Software");
-            FragmentManager manager = getSupportFragmentManager();
-            manager.beginTransaction().replace(
-                    R.id.relative_for_frag,
-                    carreras,
-                    carreras.getTag()
-            ).commit();
-
-        } else if (id == R.id._contacto) {
+        }   else if (id == R.id._contacto) {
             contacto_Fragment contacto=new contacto_Fragment();
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(
@@ -181,40 +160,23 @@ public class MainActivity extends AppCompatActivity
                     principal,
                     principal.getTag()
             ).commit();
-        }else if (id == R.id._gestion) {
+        }else if (id == R.id._carreras) {
             //Accedo a la imagen de cabecera y al listView ambos de Content_Main
+
             ImageView imagen=(ImageView)findViewById(R.id.LogoEstaticoMain);
             ListView texto=(ListView) findViewById(R.id.listView);
             //Los hago invisibles
             imagen.setVisibility(View.INVISIBLE);
 
+            carrera_Fragment carreras= new carrera_Fragment();
 
-            carrera_Fragment carreras=new carrera_Fragment();
-            carrera_Fragment.setParameter("Gestion Empresarial");
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(
                     R.id.relative_for_frag,
                     carreras,
                     carreras.getTag()
             ).commit();
-        }else if (id == R.id._turismo) {
-            carrera_Fragment carreras=new carrera_Fragment();
-            carrera_Fragment.setParameter("Tuismo");
-            FragmentManager manager = getSupportFragmentManager();
-            manager.beginTransaction().replace(
-                    R.id.relative_for_frag,
-                    carreras,
-                    carreras.getTag()
-            ).commit();
-        }else if (id == R.id._guiaT) {
-            carrera_Fragment carreras=new carrera_Fragment();
-            carrera_Fragment.setParameter("Guia Turismo");
-            FragmentManager manager = getSupportFragmentManager();
-            manager.beginTransaction().replace(
-                    R.id.relative_for_frag,
-                    carreras,
-                    carreras.getTag()
-            ).commit();
+
 
 
         }
