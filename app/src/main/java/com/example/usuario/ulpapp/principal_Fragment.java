@@ -144,8 +144,12 @@ public class principal_Fragment extends Fragment {
 
             ImageView imagen =(ImageView)itemView.findViewById(R.id.foto);
 
+            if(!noticiaActual.getTitulo().equals("Noticias")){
+                imagen.setImageBitmap(noticiaActual.getFotoImagen());
+            }else{
+                imagen.setImageResource(R.drawable.software);
+            }
 
-            imagen.setImageBitmap(noticiaActual.getFotoImagen());
 
             TextView titulo=(TextView)itemView.findViewById(R.id.titulo);
             titulo.setText(noticiaActual.getTitulo());
@@ -167,6 +171,7 @@ private void vistaDefault(List<Noticia> lista){
             Noticia n=new Noticia();
             n.setTitulo("Noticias");
             n.setDescripcion("En proceso de actualización");
+
 
             lista.add(n);
         }

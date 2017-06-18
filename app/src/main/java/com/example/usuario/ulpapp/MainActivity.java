@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity
             startService(i);
             NotificationCompat.Builder mBuilder =
                     new NotificationCompat.Builder(MainActivity.this)
-                            .setSmallIcon(android.R.drawable.arrow_down_float)
+                            .setSmallIcon(android.R.drawable.stat_sys_download)
                             .setLargeIcon((((BitmapDrawable) getResources()
                                     .getDrawable(R.drawable.logoulp)).getBitmap()))
                             .setContentTitle("Actualizando Noticias")
