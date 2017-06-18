@@ -37,10 +37,10 @@ public class FotoAdapter {
 
 
     public final static String CR_TABLE = "create table if not exists " + NAME + " ("
-            +Columns._ID+" integer primary key autoincrement , "+ Columns.URL_FOTO + " text , " +
+            +Columns._ID+" integer primary key autoincrement , "+ Columns.URL_FOTO + " integer , " +
             Columns.ID_CARRERA + " integer )";
 
-    public boolean insert(String urlfoto, int id_carrera) {
+    public boolean insert(int urlfoto, int id_carrera) {
         ContentValues valores = new ContentValues();
         valores.put(Columns.URL_FOTO,urlfoto);
         valores.put(Columns.ID_CARRERA,id_carrera);
@@ -50,7 +50,7 @@ public class FotoAdapter {
         return sqlDB.query(NAME,COLUMNS,null,null,null,null,null).getCount()==0;
     }
 
-    public boolean delete(String urlfoto) {
+    public boolean delete(int urlfoto) {
         String whereClause = Columns.URL_FOTO + "=?";
         String[] whereArgs = {String.valueOf(urlfoto)};
         return sqlDB.delete(NAME, whereClause, whereArgs) > 0;

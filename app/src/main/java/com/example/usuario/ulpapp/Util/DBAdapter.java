@@ -13,7 +13,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;
-import android.support.annotation.DrawableRes;
 
 
 import com.example.usuario.ulpapp.Database.model.Autoridades;
@@ -21,14 +20,13 @@ import com.example.usuario.ulpapp.Database.model.Carrera;
 import com.example.usuario.ulpapp.Database.model.Lugar;
 import com.example.usuario.ulpapp.Database.model.Materia;
 import com.example.usuario.ulpapp.Database.model.Residencia;
+import com.example.usuario.ulpapp.R;
 import com.example.usuario.ulpapp.parser.Noticia;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.sql.Array;
-import java.sql.Blob;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -85,7 +83,7 @@ public class DBAdapter {
         return documentacionAdapter.insert(id,desc,idResidencia);
     }
 
-    public boolean insertFoto(String url, int idcarrera){
+    public boolean insertFoto(int url, int idcarrera){
         return fotoAdapter.insert(url,idcarrera);
     }
     public boolean insertLugar(int IdLugar,String dir, String tel, double latitud,double longitud){
@@ -526,13 +524,13 @@ public class DBAdapter {
             valoresULPAdapter.insert(5,"Somos íntegros, trabajamos con ética y transparencia, procurando la equidad en todos los ámbitos en los que nos desempeñamos.");
         }
         if(fotoAdapter.isEmpty()){
-            fotoAdapter.insert("@res/drawable/carreras/empresarial.jpg",1);
-            fotoAdapter.insert("@res/drawable/carreras/software.jpg",2);
-            fotoAdapter.insert("@res/drawable/carreras/turismo.jpg",3);
-            fotoAdapter.insert("@res/drawable/carreras/guia-turismo.jpg",4);
-            fotoAdapter.insert("@res/drawable/residencias/residencia.jpg",0);
-            fotoAdapter.insert("@res/drawable/residencias/Residencias2.jpg",0);
-            fotoAdapter.insert("@res/drawable/residencias/Residencia3.pjg",0);
+            fotoAdapter.insert(R.drawable.empresarial,1);
+            fotoAdapter.insert(R.drawable.software,2);
+            fotoAdapter.insert(R.drawable.turismo,3);
+            fotoAdapter.insert(R.drawable.guiaturismo,4);
+            fotoAdapter.insert(R.drawable.residencia,0);
+            fotoAdapter.insert(R.drawable.residencias2,0);
+            fotoAdapter.insert(R.drawable.residencia3,0);
         }
 
     }
