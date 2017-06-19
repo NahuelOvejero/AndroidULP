@@ -214,5 +214,7 @@ public class BaseApplication extends Application {
     public ArrayList<String> getPorQueEstudiar(){
         return dbAdapter.getPorQueEstudiar();
     }
-
+    public int getCabeceraRectorado(){
+        return dbAdapter.getFoto(12);
+    }
 }

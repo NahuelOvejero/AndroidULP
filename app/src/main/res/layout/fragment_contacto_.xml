@@ -22,18 +22,11 @@
 
             <ImageView
                 android:id="@+id/contactoPortada"
-                android:layout_width="fill_parent"
-                android:layout_height="97dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
                 android:background="@android:color/white"
-                android:orientation="horizontal"/>
-
-            <Button
-                android:id="@+id/button1"
-                android:layout_height = "wrap_content"
-                android:layout_width ="wrap_content"
-                android:text = "lets do this"
-                android:onClick = "DoIt"
-                />
+                android:orientation="horizontal" />
 
         </LinearLayout>
 

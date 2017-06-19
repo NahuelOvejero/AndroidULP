@@ -81,9 +81,6 @@ public class resi_Fragment extends Fragment {
         }
         tvDocum.setText(doc);
 
-        TextView tvCupo= (TextView) v.findViewById(R.id.resiCupo);
-        tvCupo.setText(res.getCupo());
-
         TextView tvContacto= (TextView) v.findViewById(R.id.resiContacto);
         tvContacto.setText(res.getContacto());
 
@@ -97,6 +94,16 @@ public class resi_Fragment extends Fragment {
         listaFotos=((BaseApplication)getContext().getApplicationContext()).getFotosResi();
         Integer rutaFoto= listaFotos.get(0);
         im.setImageResource(rutaFoto);
+
+        ImageView im1=(ImageView) v.findViewById(R.id.imgResi1);
+        Integer rutaFoto1= listaFotos.get(1);
+        im1.setImageResource(rutaFoto1);
+        ImageView im2=(ImageView) v.findViewById(R.id.imgResi2);
+        Integer rutaFoto2= listaFotos.get(2);
+        im2.setImageResource(rutaFoto2);
+        ImageView im3=(ImageView) v.findViewById(R.id.imgResi3);
+        Integer rutaFoto3= listaFotos.get(3);
+        im3.setImageResource(rutaFoto3);
         // Inflate the layout for this fragment
         return v;
     }
