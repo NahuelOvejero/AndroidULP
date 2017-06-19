@@ -540,6 +540,9 @@ public class DBAdapter {
             fotoAdapter.insert(R.drawable.imgresi,9);
             fotoAdapter.insert(R.drawable.imgsoftware,10);
             fotoAdapter.insert(R.drawable.imgturismo,11);
+            fotoAdapter.insert(R.drawable.rectorado,12);
+
+
 
         }
 

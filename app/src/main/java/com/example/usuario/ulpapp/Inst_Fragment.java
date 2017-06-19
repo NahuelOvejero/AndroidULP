@@ -60,6 +60,9 @@ public class Inst_Fragment extends Fragment {
         String vision=((BaseApplication)getContext().getApplicationContext()).getVisionULP();
 
         View v=   inflater.inflate(R.layout.fragment_inst_, container, false);
+
+        //carga seccion/texto Acerca de
+
         TextView textAcerca= (TextView)v.findViewById(R.id.Acercade);
         String textoAcercade="";
 
@@ -72,12 +75,18 @@ public class Inst_Fragment extends Fragment {
 
         textAcerca.setText(textoAcercade);
         textAcerca.setMovementMethod(new ScrollingMovementMethod());
+
+
+        //carga seccion/texto mision
+
         TextView textMision =(TextView)v.findViewById(R.id.Mision);
         textMision.setText(mision);
         textMision.setMovementMethod(new ScrollingMovementMethod());
         TextView textVision =(TextView)v.findViewById(R.id.Vision);
         textVision.setText(vision);
         textVision.setMovementMethod(new ScrollingMovementMethod() );
+
+        //catga seccion/texto valores
 
         ArrayList<String> listaValores=((BaseApplication)getContext().getApplicationContext()).getValoresULP();
         String textoValores="";
@@ -91,7 +100,7 @@ public class Inst_Fragment extends Fragment {
 
 
 
-        ///metodo para lllenar el list con las autoridades
+        //metodo para lllenar el list con las autoridades
         List<Autoridades> Listautoridades=((BaseApplication)getContext().getApplicationContext()).getAutoridadesULP();
         String textAutoridades="";
         for(Autoridades a: Listautoridades){
@@ -104,12 +113,18 @@ public class Inst_Fragment extends Fragment {
 
 
 
-        //ArrayAdapter<String> ValoresAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,items);
-
+       //carga de imagen cabecera
 
         ImageView im=(ImageView)v.findViewById(R.id.Ins_cabecera);
         Integer var=((BaseApplication)getContext().getApplicationContext()).getCabeceraInstitucional();
         im.setImageResource(var);
+
+        //carga de imagen del medio
+
+        ImageView imm=(ImageView)v.findViewById(R.id.Ins_medio);
+        Integer var2=((BaseApplication)getContext().getApplicationContext()).getCabeceraRectorado();
+        imm.setImageResource(var2);
+
         return  v;
     }
 
