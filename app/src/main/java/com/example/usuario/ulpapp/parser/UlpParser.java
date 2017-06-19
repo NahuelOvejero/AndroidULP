@@ -27,7 +27,6 @@ public class UlpParser {
 
     public UlpParser(String url,Context context)
     {
-        Log.d("Parser","On");
         this.context=context;
         try
         {
@@ -35,7 +34,6 @@ public class UlpParser {
         }
         catch (MalformedURLException e)
         {
-            Log.d("Parser","Error");
             throw new RuntimeException(e);
         }
     }
@@ -46,7 +44,6 @@ public class UlpParser {
         try
         {
             SAXParser parser = factory.newSAXParser();
-            Log.d("Parser","Parseando");
             UlpHandler handler = new UlpHandler(context);
             parser.parse(this.getInputStream(), handler);
 
@@ -63,7 +60,6 @@ public class UlpParser {
         }
         catch (Exception e)
         {
-            Log.d("Errorrrrrr","er");
             throw new RuntimeException(e);
         }
     }
@@ -76,7 +72,6 @@ public class UlpParser {
         }
         catch (IOException e)
         {
-            Log.d("Error otro","Error");
 
             throw new RuntimeException(e);
         }

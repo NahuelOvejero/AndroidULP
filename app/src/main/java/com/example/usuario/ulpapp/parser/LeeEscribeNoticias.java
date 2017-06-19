@@ -51,7 +51,6 @@ public class LeeEscribeNoticias extends IntentService {
 
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
-        Log.d("Servicio","Servicio");
         ((BaseApplication) getApplicationContext()).vaciarTabla();
          UlpParser ulp=new UlpParser("http://noticias.ulp.edu.ar/rss/ultimas_rss.rss",getApplicationContext());
         ulp.parse();

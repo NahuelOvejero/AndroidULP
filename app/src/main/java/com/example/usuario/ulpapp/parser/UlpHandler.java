@@ -50,7 +50,6 @@ public class UlpHandler extends DefaultHandler{
 
         noticias = new ArrayList<Noticia>();
         sbText = new StringBuilder();
-        Log.d("Parser","adentro");
     }
 
     @Override
@@ -104,7 +103,6 @@ public class UlpHandler extends DefaultHandler{
             }
 
             sbText.setLength(0);
-            Log.d("Procesando....","Ok");
         }
     }
 
@@ -131,10 +129,8 @@ public class UlpHandler extends DefaultHandler{
 
 
         } catch (MalformedURLException e) {
-            //Log.d("Ulr mal","Mal url");
             e.printStackTrace();
         } catch (IOException e) {
-            Log.d("Io mal","Mal io");
             e.printStackTrace();
             SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
             SharedPreferences.Editor editor = pref.edit();

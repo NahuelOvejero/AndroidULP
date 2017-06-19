@@ -81,7 +81,6 @@ public class MainActivity extends AppCompatActivity
         boolean conn = pref.getBoolean("conexion", false);
 
 
-        Log.d("preferencia", pref.getBoolean("conexion", false) + "");
         if (hoy.getMonth() != mes || conn == false) {
 
             Intent i = new Intent(this, LeeEscribeNoticias.class);

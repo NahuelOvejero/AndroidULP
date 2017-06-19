@@ -55,7 +55,6 @@ public class NoticiaAdapter {
         Date d = new Date();
         CharSequence s  = DateFormat.format("dd/MM/yyyy", d.getTime());
         valores.put(Columns.ACTUALIZACION,s.toString());
-        Log.d("fecha guardada",s.toString());
         valores.put(Columns.FOTOBITMAP, BitmapAByte(foto));
 
         return sqlDB.insert(NAME,null,valores)>0;
@@ -106,7 +105,6 @@ public class NoticiaAdapter {
              return stream.toByteArray();}
 
          else{
-             Log.d("Bitmap","Nulllo");
              return null;}
 
     }
