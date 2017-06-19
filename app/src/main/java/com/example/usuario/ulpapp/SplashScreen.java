@@ -1,6 +1,7 @@
 package com.example.usuario.ulpapp;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         final AlphaAnimation fadeIn=new AlphaAnimation(0.0f,1.0f);
         fadeIn.setDuration(DURACION);
         fadeIn.setStartOffset(TIEMPO_DESPUES);

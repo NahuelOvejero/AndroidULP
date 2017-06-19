@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -21,7 +22,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <ImageView
+                android:id="@+id/imgcabez"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+
+                android:layout_weight="0.09"
+                android:adjustViewBounds="true"
+                app:srcCompat="@drawable/imggestionemp" />
 
             <TextView
                 android:id="@+id/duracion"
@@ -36,7 +47,7 @@
                 android:paddingLeft="25dp"
                 android:text="TextView"
                 android:textColor="#264377"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -44,7 +55,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="35dp"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/descripcion"
@@ -58,7 +70,7 @@
                 android:paddingBottom="5dp"
                 android:paddingLeft="35dp"
                 android:text="TextView"
-                android:textSize="12sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/Mate"
@@ -73,7 +85,7 @@
                 android:paddingLeft="28dp"
                 android:text="MATERIAS"
                 android:textColor="#264377"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <HorizontalScrollView
@@ -99,7 +111,7 @@
                         android:paddingRight="5dp"
                         android:paddingTop="8dp"
                         android:text="1"
-                        android:textSize="12sp" />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/seg"
@@ -111,7 +123,7 @@
                         android:paddingRight="77dp"
                         android:paddingTop="8dp"
                         android:text="2"
-                        android:textSize="12sp" />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/ter"
@@ -122,7 +134,7 @@
                         android:paddingRight="57dp"
                         android:paddingTop="8dp"
                         android:text="3"
-                        android:textSize="12sp" />
+                        android:textSize="16sp" />
 
                 </LinearLayout>
             </HorizontalScrollView>
@@ -137,7 +149,7 @@
                 android:paddingTop="12dp"
                 android:text="FORMACIÓN"
                 android:textColor="#264377"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -147,7 +159,7 @@
                 android:paddingBottom="8dp"
                 android:paddingLeft="30dp"
                 android:text="TextView"
-                android:textSize="12sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/textView9"
@@ -167,7 +179,7 @@
                 android:paddingBottom="8dp"
                 android:paddingLeft="30dp"
                 android:text="TextView"
-                android:textSize="12sp" />
+                android:textSize="16sp" />
         </LinearLayout>
     </ScrollView>
 
