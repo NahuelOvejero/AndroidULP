@@ -8,6 +8,8 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -85,10 +87,17 @@ public class resi_Fragment extends Fragment {
         tvContacto.setText(res.getContacto());
 
         TextView tvUrlIngreso= (TextView) v.findViewById(R.id.resiUrlIngreso);
-        tvUrlIngreso.setText("Ficha de ingreso residencias\n"+res.getURLFichaIngreso());
+        String url1=res.getURLFichaIngreso();
+        tvUrlIngreso.setText(Html.fromHtml("<a href='"+url1+"'>Ficha de ingreso residencia</a>"));
+        tvUrlIngreso.setClickable(true);
+        tvUrlIngreso.setMovementMethod (LinkMovementMethod.getInstance());
+
 
         TextView tvUrlDdjj= (TextView) v.findViewById(R.id.resiUrlDdjj);
-        tvUrlDdjj.setText("Declaracion Jurada\n"+res.getURLDeclaracionJurada());
+        String url2=res.getURLFichaIngreso();
+        tvUrlDdjj.setText(Html.fromHtml("<a href='"+url2+"'>Declaración Jurada</a>"));
+        tvUrlDdjj.setClickable(true);
+        tvUrlDdjj.setMovementMethod (LinkMovementMethod.getInstance());
 
         ImageView im=(ImageView) v.findViewById(R.id.resiPortada);
         listaFotos=((BaseApplication)getContext().getApplicationContext()).getFotosResi();
@@ -104,6 +113,7 @@ public class resi_Fragment extends Fragment {
         ImageView im3=(ImageView) v.findViewById(R.id.imgResi3);
         Integer rutaFoto3= listaFotos.get(3);
         im3.setImageResource(rutaFoto3);
+
         // Inflate the layout for this fragment
         return v;
     }
