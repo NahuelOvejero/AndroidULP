@@ -37,7 +37,9 @@
                 android:layout_marginTop="0dp"
                 android:adjustViewBounds="true"
                 android:orientation="horizontal"
-                android:padding="0dp" />
+                android:padding="0dp"
+
+                />
 
             <TextView
                 android:id="@+id/textView2"
@@ -74,10 +76,10 @@
             <ImageView
                 android:id="@+id/Ins_medio"
                 android:layout_width="wrap_content"
-                android:layout_height="200dp"
-                android:background="@drawable/rectorado"
+                android:layout_height="wrap_content"
+
                 android:layout_marginBottom="0dp"
-                />
+                android:adjustViewBounds="true" />
             <LinearLayout
                 android:background="#264377"
                 android:layout_width="fill_parent"
