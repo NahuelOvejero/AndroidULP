@@ -28,20 +28,6 @@
                 android:orientation="horizontal"/>
 
             <TextView
-
-                android:layout_width="match_parent"
-                android:layout_height="26dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:background="@android:color/white"
-                android:baselineAligned="true"
-                android:orientation="horizontal"
-                android:text="RESIDENCIAS"
-                android:textColor="#264377"
-                android:textSize="15dp"
-                android:textStyle="bold" />
-
-            <TextView
                 android:id="@+id/resiDesc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
