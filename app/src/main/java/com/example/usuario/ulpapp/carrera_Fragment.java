@@ -85,6 +85,10 @@ public class carrera_Fragment extends Fragment implements   View.OnClickListener
         btGestion.setOnClickListener(this);
         btTurismo.setOnClickListener(this);
         btGuia.setOnClickListener(this);
+
+        ImageView cabeceraCarr=(ImageView)rootView.findViewById((R.id.imageView));
+        cabeceraCarr.setImageResource(((BaseApplication)getContext().getApplicationContext()).getCabeceraCarrera());
+
         return rootView;
 
         // Inflate the layout for this fragment

@@ -217,4 +217,7 @@ public class BaseApplication extends Application {
     public int getCabeceraRectorado(){
         return dbAdapter.getFoto(12);
     }
+    public int getCabeceraCarrera(){
+        return dbAdapter.getFoto(13);
+    }
 }

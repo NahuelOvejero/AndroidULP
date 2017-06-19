@@ -26,12 +26,11 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:adjustViewBounds="true"
-                app:srcCompat="@mipmap/portada_carrera" />
+                android:adjustViewBounds="true" />
 
             <TextView
                 android:id="@+id/porqueEstudiar"
-                android:layout_width="382dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/imageView"
                 android:layout_alignParentLeft="true"
@@ -42,7 +41,7 @@
                 android:background="#264377"
                 android:paddingBottom="7dp"
                 android:paddingTop="7dp"
-                android:text="¿POR QUÉ ESTUDIAR EN EL ICT?"
+                android:text="¿Por qué estudiar en el ICT?"
                 android:textAlignment="center"
                 android:textColor="#ffffff"
                 android:textSize="18sp"
@@ -58,11 +57,12 @@
                 android:layout_alignStart="@+id/_guiaT"
                 android:layout_marginBottom="5dp"
                 android:layout_weight="0.65"
+                android:listSelector="@android:color/transparent"
                 android:paddingBottom="8dp"></ListView>
 
             <TextView
                 android:id="@+id/elegi"
-                android:layout_width="382dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/imageView"
                 android:layout_alignParentLeft="true"
@@ -74,7 +74,7 @@
                 android:background="#264377"
                 android:paddingBottom="7dp"
                 android:paddingTop="7dp"
-                android:text="ELEGÍ TU CARRERA"
+                android:text="Elegí tu carrera"
                 android:textAlignment="center"
                 android:textColor="#ffffff"
                 android:textSize="18sp"

@@ -174,12 +174,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fadeScrollbars="false"
-                    android:scrollbarThumbHorizontal="@color/colorPrimaryDark">
+                    android:scrollbarThumbHorizontal="@drawable/style_croll">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="3dp"
                         android:orientation="horizontal">
 
 
@@ -187,13 +187,13 @@
                             android:id="@+id/imgResi1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:adjustViewBounds="true" />
+                            android:adjustViewBounds="true"/>
 
                         <ImageView
                             android:id="@+id/imgResi2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:adjustViewBounds="true" />
+                            android:adjustViewBounds="true"/>
 
                         <ImageView
                             android:id="@+id/imgResi3"
