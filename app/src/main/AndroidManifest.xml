@@ -30,6 +30,10 @@
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
+        <service android:name=".parser.LeeEscribeNoticias"
+            android:enabled="true"
+            android:exported="true">
+        </service>
 
     </application>
 

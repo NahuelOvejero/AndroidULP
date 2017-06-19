@@ -3,12 +3,16 @@ package com.example.usuario.ulpapp;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.PermissionChecker;
 
@@ -22,6 +26,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.usuario.ulpapp.Database.model.Residencia;
+import com.example.usuario.ulpapp.parser.LeeEscribeNoticias;
 import com.example.usuario.ulpapp.parser.Noticia;
 import com.example.usuario.ulpapp.parser.UlpParser;
 
@@ -37,6 +42,7 @@ import com.example.usuario.ulpapp.Application.BaseApplication;
  */
 public class principal_Fragment extends Fragment {
 
+    private static final String PREF_IS_RUNNING ="conexion" ;
     private LayoutInflater inflater;
     private ViewGroup parent;
     private ListView lv;
@@ -54,53 +60,11 @@ public class principal_Fragment extends Fragment {
         // Inflate the layout for this fragment
         final View vi=inflater.inflate(R.layout.fragment_principal_, container, false);
         lv=(ListView) vi.findViewById(R.id.listView);
+        MainActivity.servicios++;
 
-        lv.setOnScrollListener(new AbsListView.OnScrollListener() {
-            private int mLastFirstVisibleItem;
-            private int up=-1;
-            private int down=-1;
-
-            @Override
-            public void onScrollStateChanged(AbsListView view, int scrollState) {
-
-            }
-
-            @Override
-            public void onScroll(AbsListView view, int firstVisibleItem,
-                                 int visibleItemCount, int totalItemCount) {
-
-                if(mLastFirstVisibleItem<firstVisibleItem && down==-1)
-                {
-
-                    ImageView im=(ImageView)vi.findViewById(R.id.LogoEstaticoFragmento);
-                    ImageView main= (ImageView) parent.findViewById(R.id.LogoEstaticoMain);
-                    main.setVisibility(View.INVISIBLE);
-                    im.setVisibility(View.GONE);
-                    down=0;
-                    up=-1;
-
-
-
-
-                }
-                if(mLastFirstVisibleItem>firstVisibleItem && up==-1)
-                {
-
-
-                    ImageView im=(ImageView)vi.findViewById(R.id.LogoEstaticoFragmento);
-                    ImageView main= (ImageView) parent.findViewById(R.id.LogoEstaticoMain);
-                    //main.setVisibility(View.VISIBLE);
-                    im.setVisibility(View.VISIBLE);
-                    im.setAdjustViewBounds(true);
-                    up=0;
-                    down=-1;
-                }
-                mLastFirstVisibleItem=firstVisibleItem;
-
-            }
-        });
         this.inflater=inflater;
         this.parent=container;
+
         cargaEquipos();
         cargaVista(inflater,container,lv);
 
@@ -120,82 +84,38 @@ public class principal_Fragment extends Fragment {
 
     private void cargaEquipos() {
 
-        UlpParser ulp=null;
-
-        principal_Fragment.CargaTask t=new principal_Fragment.CargaTask();
-       t.execute(ulp);
-
-    }
 
 
 
-    class CargaTask extends AsyncTask<UlpParser,ProgressDialog,List<Noticia>> {
-
-
-        private ProgressDialog pd = new ProgressDialog(getContext(), R.style.Theme_AppCompat_Dialog);
-        private List<Noticia> lista = null;
-
-
-        @Override
-        protected List<Noticia> doInBackground(UlpParser... params) {
             //Verifico el mes de a ultima actualización
             int mes = ((BaseApplication) getContext().getApplicationContext()).ultimaActualizacionNoticia();
-
             Date hoy = new Date();
-            //Log.d("Mes",mes+"");
-            //Log.d("Mes de sistema",hoy.getMonth()+"");
 
-            if (hoy.getMonth() != mes) {
+            if (hoy.getMonth() != mes ) {
+                vistaDefault(listaC);
 
-                ((BaseApplication) getContext().getApplicationContext()).vaciarTabla();
-                params[0] = new UlpParser("http://noticias.ulp.edu.ar/rss/ultimas_rss.rss");
-                lista = params[0].parse();
+
+
             } else {
-                lista = ((BaseApplication) getContext().getApplicationContext()).listaNoticias();
+
+                try {
+                    listaC = ((BaseApplication) getContext().getApplicationContext()).listaNoticias();
+                }catch (NullPointerException e){
+                    SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getContext().getApplicationContext());
+                    SharedPreferences.Editor editor = pref.edit();
+
+                    editor.putBoolean(PREF_IS_RUNNING, false);
+                    editor.apply();
+                    vistaDefault(listaC);
+                }
 
             }
 
 
-            return lista;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-
-
-            pd.setMessage("Cargando...");
-
-            pd.setCancelable(false);
-
-            pd.setProgressStyle(android.R.style.Widget_ProgressBar_Small);
-
-            pd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            pd.show();
-        }
-
-
-        protected void onPostExecute(List<Noticia> lista) {
-
-
-            listaC = lista;
-            //Verifico el mes de la última actualización
-            int mes = ((BaseApplication) getContext().getApplicationContext()).ultimaActualizacionNoticia();
-
-            Date hoy = new Date();
-            if (hoy.getMonth() != mes) {
-
-                ((BaseApplication) getContext().getApplicationContext()).insertarNoticias(listaC);
-
-            }
-            pd.dismiss();
-            cargaVista(inflater, parent, lv);
-            Residencia res= ((BaseApplication) getContext().getApplicationContext()).getResidencia();
-
 
         }
 
-    }
+
 
 
 
@@ -224,7 +144,12 @@ public class principal_Fragment extends Fragment {
 
             ImageView imagen =(ImageView)itemView.findViewById(R.id.foto);
 
-            imagen.setImageBitmap(noticiaActual.getFotoImagen());
+            if(!noticiaActual.getTitulo().equals("Noticias")){
+                imagen.setImageBitmap(noticiaActual.getFotoImagen());
+            }else{
+                imagen.setImageResource(R.drawable.software);
+            }
+
 
             TextView titulo=(TextView)itemView.findViewById(R.id.titulo);
             titulo.setText(noticiaActual.getTitulo());
@@ -240,5 +165,15 @@ public class principal_Fragment extends Fragment {
         }
     }
 
+private void vistaDefault(List<Noticia> lista){
 
+        for(int i=0;i<10;i++){
+            Noticia n=new Noticia();
+            n.setTitulo("Noticias");
+            n.setDescripcion("En proceso de actualización");
+
+
+            lista.add(n);
+        }
+    }
 }
