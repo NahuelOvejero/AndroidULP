@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.usuario.ulpapp.Application.BaseApplication;
@@ -32,6 +33,7 @@ public class mycarreraa extends Fragment {
     TextView c_titulo;TextView c_duracion;TextView c_descripcion;
     TextView c_año1;TextView c_añoo2;TextView c_año3;
     TextView c_proff;TextView c_coments;
+    ImageView c_cabe;
 
 
 
@@ -74,6 +76,11 @@ public class mycarreraa extends Fragment {
 
             c_coments=(TextView) v.findViewById(R.id.obj);
             c_proff=(TextView) v.findViewById(R.id.profes);
+
+            c_cabe=(ImageView)v.findViewById((R.id.imgcabez));
+            c_cabe.setImageResource(((BaseApplication)getContext().getApplicationContext()).getCabeceraSoft());
+
+
 
             String doc="";
             for(String s:coment)
@@ -173,6 +180,9 @@ public class mycarreraa extends Fragment {
 
             c_coments=(TextView) v.findViewById(R.id.obj);
             c_proff=(TextView) v.findViewById(R.id.profes);
+
+            c_cabe=(ImageView)v.findViewById((R.id.imgcabez));
+            c_cabe.setImageResource(((BaseApplication)getContext().getApplicationContext()).getCabeceraGestion());
 
             String doc="";
             for(String s:coment)
@@ -274,6 +284,9 @@ public class mycarreraa extends Fragment {
             c_coments=(TextView) v.findViewById(R.id.obj);
             c_proff=(TextView) v.findViewById(R.id.profes);
 
+            c_cabe=(ImageView)v.findViewById((R.id.imgcabez));
+            c_cabe.setImageResource(((BaseApplication)getContext().getApplicationContext()).getCabeceraGuia());
+
             String doc="";
             for(String s:coment)
             {
@@ -372,6 +385,9 @@ public class mycarreraa extends Fragment {
 
             c_coments=(TextView) v.findViewById(R.id.obj);
             c_proff=(TextView) v.findViewById(R.id.profes);
+
+            c_cabe=(ImageView)v.findViewById((R.id.imgcabez));
+            c_cabe.setImageResource(((BaseApplication)getContext().getApplicationContext()).getCabeceraTurismo());
 
             String doc="";
             for(String s:coment)

@@ -7,100 +7,138 @@
     tools:context="com.example.usuario.ulpapp.carrera_Fragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/porqueEstudiar"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="#264377"
-        android:paddingBottom="7dp"
-        android:paddingLeft="28dp"
-        android:text="¿Por qué estudiar en el ICT?"
-        android:textColor="#ffffff"
-        android:textSize="18sp"
-        android:textAlignment="center"
-        android:layout_alignBottom="@+id/imageView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
 
-    <ListView
-        android:id="@+id/porqueEstudiarList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/_guiaT"
-        android:layout_alignEnd="@+id/_guiaT"
-        android:layout_alignLeft="@+id/_guiaT"
-        android:layout_alignRight="@+id/_guiaT"
-        android:layout_alignStart="@+id/_guiaT"
 
-        android:layout_below="@+id/porqueEstudiar"
-        android:layout_marginBottom="10dp"
-        android:paddingBottom="8dp"></ListView>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/_guiaT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/_turismo"
-        android:layout_alignLeft="@+id/_turismo"
-        android:layout_alignStart="@+id/_turismo"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="1">
 
-        android:layout_marginBottom="24dp"
-        android:width="300dp"
-        android:background="@android:color/white"
-        android:includeFontPadding="false"
-        android:onClick="onButtonClicked"
-        android:text="Turismo"
-        android:textColor="#264377" />
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:adjustViewBounds="true"
+                app:srcCompat="@mipmap/portada_carrera" />
 
-    <Button
-        android:id="@+id/_turismo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/_gestion"
-        android:layout_alignLeft="@+id/_gestion"
-        android:layout_alignStart="@+id/_gestion"
-        android:layout_marginBottom="23dp"
-        android:width="300dp"
-        android:background="@android:color/white"
-        android:text="Guia De Turismo"
-        android:onClick="onButtonClicked"
-        android:textColor="#264377" />
+            <TextView
+                android:id="@+id/porqueEstudiar"
+                android:layout_width="382dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/imageView"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="18dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="5dp"
+                android:background="#264377"
+                android:paddingBottom="7dp"
+                android:paddingTop="7dp"
+                android:text="¿POR QUÉ ESTUDIAR EN EL ICT?"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/_gestion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/_desarrollo"
-        android:layout_alignLeft="@+id/_desarrollo"
-        android:layout_alignStart="@+id/_desarrollo"
-        android:layout_marginBottom="21dp"
-        android:width="300dp"
-        android:background="@android:color/white"
-        android:onClick="onButtonClicked"
-        android:text="Gestion Empresarial"
-        android:textColor="#264377" />
+            <ListView
+                android:id="@+id/porqueEstudiarList"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
 
-    <Button
-        android:id="@+id/_desarrollo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="38dp"
-        android:width="300dp"
-        android:background="@android:color/white"
-        android:onClick="onButtonClicked"
-        android:text="Desarrollo de Software"
-        android:textColor="#264377"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+                android:layout_above="@+id/_turismo"
+                android:layout_alignLeft="@+id/_guiaT"
+                android:layout_alignStart="@+id/_guiaT"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="0.65"
+                android:paddingBottom="8dp"></ListView>
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/portada_carrera"
-        android:layout_marginBottom="54dp"
-        android:layout_above="@+id/_guiaT"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+            <TextView
+                android:id="@+id/elegi"
+                android:layout_width="382dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/imageView"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="25dp"
+                android:layout_marginLeft="18dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="20dp"
+                android:background="#264377"
+                android:paddingBottom="7dp"
+                android:paddingTop="7dp"
+                android:text="ELEGÍ TU CARRERA"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/_guiaT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/_turismo"
+                android:layout_alignLeft="@+id/_turismo"
+                android:layout_alignStart="@+id/_turismo"
+
+                android:layout_marginBottom="24dp"
+                android:width="300dp"
+                android:background="@android:color/white"
+                android:includeFontPadding="false"
+                android:onClick="onButtonClicked"
+                android:text="Tecnicatura en Turismo"
+                android:textColor="#264377" />
+
+            <Button
+                android:id="@+id/_turismo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/_gestion"
+                android:layout_alignLeft="@+id/_gestion"
+                android:layout_alignStart="@+id/_gestion"
+                android:layout_marginBottom="23dp"
+                android:width="300dp"
+                android:background="@android:color/white"
+                android:onClick="onButtonClicked"
+                android:text="Guia De Turismo"
+                android:textColor="#264377" />
+
+            <Button
+                android:id="@+id/_gestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/_desarrollo"
+                android:layout_alignLeft="@+id/_desarrollo"
+                android:layout_alignStart="@+id/_desarrollo"
+                android:layout_marginBottom="21dp"
+                android:width="300dp"
+                android:background="@android:color/white"
+                android:onClick="onButtonClicked"
+                android:text="Gestion Empresarial"
+                android:textColor="#264377" />
+
+            <Button
+                android:id="@+id/_desarrollo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="38dp"
+                android:width="300dp"
+                android:background="@android:color/white"
+                android:onClick="onButtonClicked"
+                android:text="Desarrollo de Software"
+                android:textColor="#264377" />
+
+        </LinearLayout>
+    </ScrollView>
+
 
 </RelativeLayout>
