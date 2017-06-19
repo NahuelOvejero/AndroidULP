@@ -211,4 +211,8 @@ public class BaseApplication extends Application {
     public int getCabeceraTurismo(){
         return dbAdapter.getFoto(11);
     }
+    public ArrayList<String> getPorQueEstudiar(){
+        return dbAdapter.getPorQueEstudiar();
+    }
+
 }

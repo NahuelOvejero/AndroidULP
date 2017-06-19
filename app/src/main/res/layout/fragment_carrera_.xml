@@ -7,6 +7,34 @@
     tools:context="com.example.usuario.ulpapp.carrera_Fragment">
 
     <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/porqueEstudiar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#264377"
+        android:paddingBottom="7dp"
+        android:paddingLeft="28dp"
+        android:text="¿Por qué estudiar en el ICT?"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ListView
+        android:id="@+id/porqueEstudiarList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/_guiaT"
+        android:layout_alignEnd="@+id/_guiaT"
+        android:layout_alignLeft="@+id/_guiaT"
+        android:layout_alignRight="@+id/_guiaT"
+        android:layout_alignStart="@+id/_guiaT"
+
+        android:layout_below="@+id/porqueEstudiar"
+        android:layout_marginBottom="10dp"
+        android:paddingBottom="8dp"></ListView>
 
     <Button
         android:id="@+id/_guiaT"
@@ -15,11 +43,13 @@
         android:layout_above="@+id/_turismo"
         android:layout_alignLeft="@+id/_turismo"
         android:layout_alignStart="@+id/_turismo"
+
         android:layout_marginBottom="24dp"
         android:width="300dp"
         android:background="@android:color/white"
-        android:text="Turismo"
+        android:includeFontPadding="false"
         android:onClick="onButtonClicked"
+        android:text="Turismo"
         android:textColor="#264377" />
 
     <Button
@@ -54,14 +84,14 @@
         android:id="@+id/_desarrollo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="101dp"
+        android:layout_marginBottom="38dp"
         android:width="300dp"
         android:background="@android:color/white"
         android:onClick="onButtonClicked"
         android:text="Desarrollo de Software"
-        android:textColor="#264377" />
+        android:textColor="#264377"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
     <ImageView
         android:id="@+id/imageView"

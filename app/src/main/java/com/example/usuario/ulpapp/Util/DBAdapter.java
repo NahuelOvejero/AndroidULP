@@ -486,8 +486,9 @@ public class DBAdapter {
             porQueEstudiarAdapter.insert(3,"Educación pública y gratuita.");
             porQueEstudiarAdapter.insert(4,"Prácticas profesionales.");
             porQueEstudiarAdapter.insert(5,"Salidas educativas.");
-            porQueEstudiarAdapter.insert(6,"Pasantías o becas de trabajo.");
-            porQueEstudiarAdapter.insert(7,"Residencia Universitaria.");
+            porQueEstudiarAdapter.insert(6,"Pasantías de trabajo.");
+            porQueEstudiarAdapter.insert(7,"Residencia.");
+            porQueEstudiarAdapter.insert(8,"Clases personalizadas");
         }
         if(acercaULPAdapter.isEmpty()){
             acercaULPAdapter.insert(1,"En el año 2004 se crea por ley II-0034, la Universidad de La Punta (ULP) con el propósito de formar profesionales en áreas estratégicas asociadas al crecimiento y progreso de la provincia. \n" +
@@ -672,7 +673,7 @@ public class DBAdapter {
     }
     public ArrayList<String> getPorQueEstudiar(){
         ArrayList<String> porque=new ArrayList<>();
-        Cursor c= objetivoAdapter.getObjetivos();
+        Cursor c= porQueEstudiarAdapter.getPorque();
         if(c.moveToFirst())
         {
             do {
