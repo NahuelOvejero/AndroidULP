@@ -113,6 +113,7 @@ public class MainActivity extends AppCompatActivity
 
         principal_Fragment principal = new principal_Fragment();
         FragmentManager manager = getSupportFragmentManager();
+
         manager.beginTransaction().replace(
                 R.id.relative_for_frag,
                 principal,

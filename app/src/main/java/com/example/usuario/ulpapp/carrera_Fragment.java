@@ -74,7 +74,7 @@ public class carrera_Fragment extends Fragment implements   View.OnClickListener
                     R.id.relative_for_frag,
                     carrera,
                     carrera.getTag()
-            ).commit();
+            ).addToBackStack(null).commit();
         }
 
         else if (view.getId()== R.id._gestion){
@@ -86,7 +86,7 @@ public class carrera_Fragment extends Fragment implements   View.OnClickListener
                     R.id.relative_for_frag,
                     carrera,
                     carrera.getTag()
-            ).commit();
+            ).addToBackStack(null).commit();
 
         }
         else if (view.getId()== R.id._guiaT){
@@ -98,7 +98,7 @@ public class carrera_Fragment extends Fragment implements   View.OnClickListener
                     R.id.relative_for_frag,
                     carrera,
                     carrera.getTag()
-            ).commit();
+            ).addToBackStack(null).commit();
 
         }
         else if (view.getId()== R.id._turismo){
@@ -110,7 +110,7 @@ public class carrera_Fragment extends Fragment implements   View.OnClickListener
                     R.id.relative_for_frag,
                     carrera,
                     carrera.getTag()
-            ).commit();
+            ).addToBackStack(null).commit();
 
         }
     }
