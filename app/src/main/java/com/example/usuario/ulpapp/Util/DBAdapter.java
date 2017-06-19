@@ -219,7 +219,7 @@ public class DBAdapter {
         }
         if(carreraAdapter.isEmpty()){
             carreraAdapter.insert(1,"Tecnicatura en Gestión Empresarial",3,2,"Está diseñada en respuesta a la demanda del mercado que, ante un crecimiento económico y un aumento en la competitividad, necesita de profesionales que agilicen la gestión dentro de las empresas. El profesional contará con las herramientas para optimizar la utilización de los recursos de la empresa. También, podrá generar su propio emprendimiento.");
-            carreraAdapter.insert(2,"Tecnicatura en Desarrollo de Software",3,1,"La carrera está diseñada para permitir una rápida inserción en el ámbito laboral. Los conocimientos adquiridos le permitirán al egresado insertarse en compañías de la industria tecnológica y de otras actividades de la economía, como así también, en el ámbito gubernamental.");
+            carreraAdapter.insert(2,"Tecnicatura en Desarrollo de Software",3,1,"En la Tecnicatura desarrollo de software aprenderás a diseñar y crear aplicaciones móviles, de escritorio y páginas web. Utilizaras las últimas herramientas tecnológicas, combinadas con tu creatividad para hacer aplicaciones reales, funcionales y profesionales. La carrera está diseñada para una rápida inserción en el ámbito laboral. Uno de los ámbitos laborales, Parque Informático La Punta (PILP), que se encuentra en el mismo campus de la Universidad. El PILP cuenta con más de 15 empresas. Grandes empresas como Mercado Libre, Raona, ALAS. También te brindamos las herramientas para crear tu propia empresa. Otra de las grandes posibilidades, es ofrecer tus servicios a empresas para proyectos específicos trabajando desde la comodidad de tu casa. Sin importar la orientación de tus estudios, género o edad, podrás adaptarte a las necesidades tecnólogicas de problemas reales , creando soluciones eficientes y elegantes.");
             carreraAdapter.insert(3,"Tecnicatura en Turismo",3,2,"Desde una perspectiva local, la provincia de San Luis ha definido a la actividad turística como una de las áreas centrales para su desarrollo, convirtiéndose en un destino turístico centrado en su riqueza cultural, histórica y natural. El profesional egresado reunirá aptitudinalmente las condiciones para administrar y conformar agencias de viajes y turismo, como así también formular proyectos inherentes");
             carreraAdapter.insert(4,"Tecnicatura en Guía de Turismo",3,2,"San Luis se ha convertido en uno de los principales destinos turísticos del país, gracias a las políticas aplicadas por el Gobierno provincial. En esta tecnicatura se brinda una propuesta formativa que integre los aspectos básicos, aplicados, prácticos y éticos profesionales desde una perspectiva multidisciplinaria e interdisciplinaria. Al finalizar la carrera el profesional estará capacitado para brindar información específica en contacto con el turista, en senderos de interpretación, circuitos guiados y podrá coordinar excursiones programadas.");
         }
@@ -392,7 +392,7 @@ public class DBAdapter {
             profesional_queAdapter.insert(3,"Coordina e integra equipos de trabajo interdisciplinario.",1);
             profesional_queAdapter.insert(4,"Elabora informes técnicos internos para promover la constitución, desarrollo y fortalecimiento de las or-ganizaciones.",1);
             //Software p 37
-            profesional_queAdapter.insert(5,"Participa en equipos integrados por especialistas de distintos campos del conocimiento.",2);
+            profesional_queAdapter.insert(5,"Participa en equipos integrados por especialistas de distintos campos de la informática.",2);
             profesional_queAdapter.insert(6,"Diseña y administra todo el cilo de vida del software",2);
             profesional_queAdapter.insert(7,"Opera y mantiene sistemas informáticos y soluciones de software",2);
             //Técnico en turismo P 40
@@ -421,10 +421,10 @@ public class DBAdapter {
             competente_enAdapter.insert(6,"Participación en el desarrollo de políticas organizacionales.",1);
             //Software
             competente_enAdapter.insert(7,"Administración de equipos que diseñen, construyan y operen soluciones de software.",2);
-            competente_enAdapter.insert(8,"Análisis, diseño y programación de soluciones informáticas aplicando las mejores prácticas.",2);
+            competente_enAdapter.insert(8,"Desarrollo de soluciones informáticas aplicando las mejores prácticas.",2);
             competente_enAdapter.insert(9,"Participación de equipos de investigación y desarrollo.",2);
-            competente_enAdapter.insert(10,"Transmisión de conocimientos en tareas relativas a su especialidad.",2);
-            competente_enAdapter.insert(11,"Evaluación del impacto de las soluciones implementadas en las organizaciones y la comunidad.",2);
+            competente_enAdapter.insert(10,"Transmisión de conocimientos en tareas relativas a la informática.",2);
+            competente_enAdapter.insert(11,"Desarrollo de aplicaciones multiplataformas (móviles,web, de escritorio)",2);
             competente_enAdapter.insert(12,"Desempeño con sentido ético respecto de clientes, usuarios, colegas y la sociedad en su conjunto.",2);
             // Tect en turismo
             competente_enAdapter.insert(13,"Estudio, procesamiento y diseño de circuitos turísticos para formar parte de la oferta turística lo-cal.",3);
