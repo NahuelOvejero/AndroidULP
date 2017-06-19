@@ -4,15 +4,18 @@
     android:id="@+id/contiene"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/transparent">
+    android:background="?attr/colorControlHighlight"
+    android:paddingBottom="7dp"
+    >
 
     <ImageView
         android:id="@+id/foto"
-        android:layout_width="300dp"
+        android:layout_width="250dp"
         android:layout_height="200dp"
         android:longClickable="false"
         android:maxHeight="80dp"
         android:maxWidth="80dp"
+
         android:src="@drawable/ic_menu_camera"
         tools:ignore="ContentDescription"
         android:layout_below="@+id/fecha"
@@ -26,20 +29,26 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:background="#264377"
+        android:paddingBottom="7dp"
+        android:paddingLeft="28dp"
+
         android:text="Large Text"
         android:textColor="#ffffff"
-        android:textSize="20sp" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/descripcion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/foto"
         android:gravity="clip_horizontal"
+        android:paddingLeft="1dp"
+        android:paddingRight="7dp"
         android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="16sp"
+        android:layout_below="@+id/foto"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/fecha"
@@ -48,7 +57,11 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/titulo"
+        android:paddingBottom="3dp"
+        android:paddingLeft="28dp"
+        android:paddingTop="5dp"
         android:text="Large Text"
-        android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle" />
+        android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle"
+        android:textColor="#f39e08" />
 
 </RelativeLayout>
