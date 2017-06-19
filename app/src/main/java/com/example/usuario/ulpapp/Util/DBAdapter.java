@@ -742,6 +742,7 @@ public class DBAdapter {
     }
     public String getVision(){
         Cursor c=visionULPAdapter.getVision();
+        c.moveToFirst();
         return c.getString(c.getColumnIndex("Descripcion"));
     }
     public ArrayList<Integer> getFotosResi(){
