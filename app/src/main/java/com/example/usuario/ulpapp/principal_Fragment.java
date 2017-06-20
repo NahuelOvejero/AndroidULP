@@ -48,7 +48,7 @@ public class principal_Fragment extends Fragment {
     private ListView lv;
 
 
-    private List<Noticia> listaC=new ArrayList<Noticia>();
+    private List<Noticia> listaC=new ArrayList<>();
     public principal_Fragment() {
         // Required empty public constructor
     }
@@ -170,7 +170,10 @@ private void vistaDefault(List<Noticia> lista){
         for(int i=0;i<10;i++){
             Noticia n=new Noticia();
             n.setTitulo("Noticias");
-            n.setDescripcion("En proceso de actualización");
+            n.setDescripcion("Mientras esperás a que se actualicen las noticias, " +
+                    "te invitamos a recorrer el menú de nuestra aplicación, para que conozcas un poco más " +
+                    "nuestra prestigiosa institución. ");
+
 
 
             lista.add(n);
