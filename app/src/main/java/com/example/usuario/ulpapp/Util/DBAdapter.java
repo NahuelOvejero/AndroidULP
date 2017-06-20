@@ -97,7 +97,7 @@ public class DBAdapter {
 
     }*/
 
-    public Lugar getLugar(int IdCarrera){
+    public Lugar getLugars(int IdCarrera){
         String TC=CarreraAdapter.getName();
         String TL=LugarAdapter.getName();
         String query= "Select Telefono,Latitud,Longitud,Direccion from "+TC+" inner join "+ TL+" on "+TL+"."+ LugarAdapter.getColumnId()+"="+TC+".Id_lugar_cursado where "+CarreraAdapter.getColumnId()+"=?";
@@ -106,7 +106,12 @@ public class DBAdapter {
         Lugar nLugar=new Lugar(l.getString(l.getColumnIndex("Direccion")),l.getString(l.getColumnIndex("Telefono")),l.getDouble(l.getColumnIndex("Latitud")),l.getDouble(l.getColumnIndex("Longitud")));
         return nLugar;
     }
-
+    public Lugar getLugar(int id){
+        String query="Select Telefono,Latitud,Longitud,Direccion from "+LugarAdapter.getName()+" where "+LugarAdapter.getColumnId()+"=?";
+        Cursor lug=sqlDB.rawQuery(query,new String[]{String.valueOf(id)});
+        lug.moveToFirst();
+       return new Lugar(lug.getString(lug.getColumnIndex("Direccion")),lug.getString(lug.getColumnIndex("Telefono")),lug.getDouble(lug.getColumnIndex("Latitud")),lug.getDouble(lug.getColumnIndex("Longitud")));
+    }
 
 
     public boolean insertResidencia(int id, String desc, String pago, String contact,String titulo, String urlficha,String urldeclaracion){
@@ -214,14 +219,14 @@ public class DBAdapter {
     public void generarBD(){
         if(lugarAdapter.isEmpty())
         {
-            lugarAdapter.insert(1,"Av. Universitaria s/n, 5710 La Punta, San Luis","4452000",-33.1511496,-66.3058375);
-            lugarAdapter.insert(2," Av. Lafinur 840, San Luis","4452000",-33.301986,-66.3470709);
+            lugarAdapter.insert(1,"Av. Universitaria s/n, 5710 La Punta, San Luis","02664 452000 - int. 6114",-33.1511496,-66.3058375);
+            lugarAdapter.insert(2," Av. Lafinur 840, San Luis","4452000 int 6108",-33.302560, -66.346653);
         }
         if(carreraAdapter.isEmpty()){
             carreraAdapter.insert(1,"Tecnicatura en Gestión Empresarial",3,2,"Está diseñada en respuesta a la demanda del mercado que, ante un crecimiento económico y un aumento en la competitividad, necesita de profesionales que agilicen la gestión dentro de las empresas. El profesional contará con las herramientas para optimizar la utilización de los recursos de la empresa. También, podrá generar su propio emprendimiento.");
             carreraAdapter.insert(2,"Tecnicatura en Desarrollo de Software",3,1,"En la Tecnicatura desarrollo de software aprenderás a diseñar y crear aplicaciones móviles, de escritorio y páginas web. Utilizaras las últimas herramientas tecnológicas, combinadas con tu creatividad para hacer aplicaciones reales, funcionales y profesionales. La carrera está diseñada para una rápida inserción en el ámbito laboral. Uno de los ámbitos laborales, Parque Informático La Punta (PILP), que se encuentra en el mismo campus de la Universidad. El PILP cuenta con más de 15 empresas. Grandes empresas como Mercado Libre, Raona, ALAS. También te brindamos las herramientas para crear tu propia empresa. Otra de las grandes posibilidades, es ofrecer tus servicios a empresas para proyectos específicos trabajando desde la comodidad de tu casa. Sin importar la orientación de tus estudios, género o edad, podrás adaptarte a las necesidades tecnólogicas de problemas reales , creando soluciones eficientes y elegantes.");
             carreraAdapter.insert(3,"Tecnicatura en Turismo",3,2,"Desde una perspectiva local, la provincia de San Luis ha definido a la actividad turística como una de las áreas centrales para su desarrollo, convirtiéndose en un destino turístico centrado en su riqueza cultural, histórica y natural. El profesional egresado reunirá aptitudinalmente las condiciones para administrar y conformar agencias de viajes y turismo, como así también formular proyectos inherentes");
-            carreraAdapter.insert(4,"Tecnicatura en Guía de Turismo",3,2,"San Luis se ha convertido en uno de los principales destinos turísticos del país, gracias a las políticas aplicadas por el Gobierno provincial. En esta tecnicatura se brinda una propuesta formativa que integre los aspectos básicos, aplicados, prácticos y éticos profesionales desde una perspectiva multidisciplinaria e interdisciplinaria. Al finalizar la carrera el profesional estará capacitado para brindar información específica en contacto con el turista, en senderos de interpretación, circuitos guiados y podrá coordinar excursiones programadas.");
+            carreraAdapter.insert(4,"Guía de Turismo",3,2,"San Luis se ha convertido en uno de los principales destinos turísticos del país, gracias a las políticas aplicadas por el Gobierno provincial. En esta tecnicatura se brinda una propuesta formativa que integre los aspectos básicos, aplicados, prácticos y éticos profesionales desde una perspectiva multidisciplinaria e interdisciplinaria. Al finalizar la carrera el profesional estará capacitado para brindar información específica en contacto con el turista, en senderos de interpretación, circuitos guiados y podrá coordinar excursiones programadas.");
         }
         if(materiaAdapter.isEmpty()){
             //Materias de gestión empresarial del 0 al 30
@@ -542,8 +547,6 @@ public class DBAdapter {
             fotoAdapter.insert(R.drawable.imgturismo,11);
             fotoAdapter.insert(R.drawable.rectorado,12);
             fotoAdapter.insert(R.drawable.imgcarreras,13);
-
-
 
         }
 

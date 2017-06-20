@@ -217,6 +217,12 @@ public class BaseApplication extends Application {
     public int getCabeceraRectorado(){
         return dbAdapter.getFoto(12);
     }
+    public Lugar getULP(){
+        return dbAdapter.getLugar(1);
+    }
+    public Lugar getICT(){
+        return dbAdapter.getLugar(2);
+    }
     public int getCabeceraCarrera(){
         return dbAdapter.getFoto(13);
     }
