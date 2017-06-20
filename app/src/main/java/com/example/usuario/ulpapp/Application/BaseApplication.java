@@ -120,7 +120,7 @@ public class BaseApplication extends Application {
         return dbAdapter.getCarrera(1);
     }
     public Lugar getLugarEmp(){
-        return  dbAdapter.getLugar(1);
+        return  dbAdapter.getLugar(2);
     }
     public ArrayList<String> getCompetenteEnEmp(){
         return dbAdapter.getCompetente(1);
@@ -138,7 +138,7 @@ public class BaseApplication extends Application {
         return dbAdapter.getCarrera(2);
     }
     public Lugar getLugarSoft(){
-        return  dbAdapter.getLugar(2);
+        return  dbAdapter.getLugar(1);
     }
     public ArrayList<String> getCompetenteEnSoft(){
         return dbAdapter.getCompetente(2);
@@ -155,7 +155,7 @@ public class BaseApplication extends Application {
         return dbAdapter.getCarrera(3);
     }
     public Lugar getLugarTur(){
-        return  dbAdapter.getLugar(3);
+        return  dbAdapter.getLugar(2);
     }
     public ArrayList<String> getCompetenteEnTur(){
         return dbAdapter.getCompetente(3);
@@ -174,7 +174,7 @@ public class BaseApplication extends Application {
         return dbAdapter.getCarrera(4);
     }
     public Lugar getLugarGuiaTur(){
-        return  dbAdapter.getLugar(4);
+        return  dbAdapter.getLugar(2);
     }
     public ArrayList<String> getCompetenteEnGuiaTur(){
         return dbAdapter.getCompetente(4);
