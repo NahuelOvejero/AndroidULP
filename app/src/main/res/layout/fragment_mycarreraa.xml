@@ -175,8 +175,32 @@
                 android:layout_height="wrap_content"
                 android:text="TextView"
                 android:textSize="16sp" />
+
+            <HorizontalScrollView
+                android:id="@+id/hsvEgresado"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fadeScrollbars="false"
+                android:scrollbarThumbHorizontal="@drawable/style_croll">
+            </HorizontalScrollView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingLeft="28dp"
+                android:text="SEDE"
+                android:textColor="#264377"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/sede"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="8dp"
+                android:paddingLeft="30dp"
+                android:text=""
+                android:textSize="16sp" />
         </LinearLayout>
     </ScrollView>
-
-
 </RelativeLayout>
