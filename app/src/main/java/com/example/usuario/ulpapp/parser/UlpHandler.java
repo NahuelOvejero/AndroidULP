@@ -84,7 +84,7 @@ public class UlpHandler extends DefaultHandler{
 
             }  else if (localName.equals("img")) {
                 //Verificar si existe en la base de datos.
-                noticia.setFotoImagen();
+                noticia.setFotoImagen(cargaImagen("http://noticias.ulp.edu.ar/img/img_portadas/"+sbText.toString().trim()));
                 noticia.setFoto("http://noticias.ulp.edu.ar/img/img_portadas/"+sbText.toString().trim());
 
 
@@ -95,6 +95,7 @@ public class UlpHandler extends DefaultHandler{
             sbText.setLength(0);
         }
     }
+
 
     public Bitmap cargaImagen(String ruta){
 
@@ -126,4 +127,6 @@ public class UlpHandler extends DefaultHandler{
         }
         return imagen;
     }
+
+
 }

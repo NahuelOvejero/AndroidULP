@@ -92,6 +92,7 @@ public class principal_Fragment extends Fragment {
         protected List<Noticia> doInBackground(UlpParser... params) {
             //Verifico el mes de a ultima actualización
             int mes=((BaseApplication)getContext().getApplicationContext()).ultimaActualizacionNoticia();
+
             Date hoy=new Date();
             Log.d("Mes",mes+"");
             Log.d("Mes de sistema",hoy.getMonth()+"");
@@ -117,7 +118,7 @@ public class principal_Fragment extends Fragment {
             super.onPreExecute();
             pd.setMessage("Cargando...");
 
-            pd.setCancelable(false);
+           pd.setCancelable(false);
 
             pd.setProgressStyle(android.R.style.Widget_ProgressBar_Small);
 
@@ -132,6 +133,7 @@ public class principal_Fragment extends Fragment {
             listaC=lista;
             //Verifico el mes de la última actualización
             int mes=((BaseApplication)getContext().getApplicationContext()).ultimaActualizacionNoticia();
+
             Date hoy=new Date();
             if(hoy.getMonth()!=mes){
 
