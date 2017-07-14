@@ -40,23 +40,24 @@ public class NoticiaAdapter {
         public final static String FOTOBITMAP = "Bitmap";
         public final static String ACTUALIZACION="Actualizacion";
     }
-    private static String[] COLUMNS={Columns._ID,Columns.TITULO,Columns.DESCRIPCION,Columns.FECHA,Columns.FOTOURL, Columns.FOTOBITMAP};
+    private static String[] COLUMNS={Columns._ID,Columns.TITULO,Columns.DESCRIPCION,Columns.FECHA,Columns.FOTOURL, Columns.FOTOBITMAP,Columns.ACTUALIZACION};
 
     public final static String CR_TABLE="create table if not exists "+ NAME+" ("
             +Columns._ID+" integer primary key autoincrement, "+Columns.TITULO+" text, "
-            +Columns.DESCRIPCION +" text, "+Columns.FECHA+" text, "+Columns.FOTOURL+" text, "+ Columns.FOTOBITMAP+ " BLOB " +Columns.ACTUALIZACION+" text )";
-    public boolean insert (int IdCarrera,String Titulo,String descr, String fecha,String foto){
+            +Columns.DESCRIPCION +" text, "+Columns.FECHA+" text, "+Columns.FOTOURL+" text, "+ Columns.FOTOBITMAP+ " BLOB, " +Columns.ACTUALIZACION+" text )";
+    public boolean insert (int IdCarrera,String Titulo,String descr, String fecha,Bitmap foto, String urlfoto){
         ContentValues valores=new ContentValues();
         valores.put(Columns._ID,IdCarrera);
         valores.put(Columns.TITULO,Titulo);
         valores.put(Columns.DESCRIPCION,descr);
         valores.put(Columns.FECHA,fecha);
-        valores.put(Columns.FOTOURL,foto);
-        valores.put(Columns.FOTOBITMAP,this.URLaBytes(foto));
+        valores.put(Columns.FOTOURL,urlfoto);
         Date d = new Date();
         CharSequence s  = DateFormat.format("dd/MM/yyyy", d.getTime());
         valores.put(Columns.ACTUALIZACION,s.toString());
         Log.d("fecha guardada",s.toString());
+        valores.put(Columns.FOTOBITMAP, BitmapAByte(foto));
+
         return sqlDB.insert(NAME,null,valores)>0;
     }
     public boolean delete(int Id){
@@ -72,7 +73,7 @@ public class NoticiaAdapter {
         return sqlDB.query(NAME,col,whereClause,whereArgs,null,null,null,null);
     }
     public Cursor Noticias(){
-        String [] col={Columns.TITULO,Columns.DESCRIPCION,Columns.FECHA,Columns.FOTOURL,Columns.FOTOBITMAP};
+        String [] col={Columns.TITULO,Columns.DESCRIPCION,Columns.FECHA,Columns.FOTOURL,Columns.FOTOBITMAP,Columns.ACTUALIZACION};
         return  sqlDB.query(NAME,col,null,null,null,null,null);
     }
     public static String getColumnId(){
@@ -90,41 +91,24 @@ public class NoticiaAdapter {
 
     public void vaciarTabla(){
 
-        sqlDB.delete(NAME,null,null);
+       // sqlDB.delete(NAME,null,null);
     }
 
 
     //este metodo encapsula el conversor de url a bitmap, y de bitmap lo lleva un array de bytes
     // para poder ser guardado en la BD cono BLOB
-     private byte[] URLaBytes(String ruta) {
 
-         URL imageUrl = null;
-         HttpURLConnection conn = null;
-         Bitmap bitmap = null;
+     private byte[] BitmapAByte(Bitmap bitmap) {
 
-         try {
-
-             imageUrl = new URL(ruta);
-             conn = (HttpURLConnection) imageUrl.openConnection();
-             conn.connect();
-
-             BitmapFactory.Options options = new BitmapFactory.Options();
-             options.inSampleSize = 4; // el factor de escala a minimizar la imagen, siempre es potencia de 2
-
-             bitmap = BitmapFactory.decodeStream(conn.getInputStream(), new Rect(0, 0, 0, 0), options);
-
-
-         } catch (MalformedURLException e) {
-             Log.d("Ulr mal", "Mal url");
-             e.printStackTrace();
-         } catch (IOException e) {
-             Log.d("Io mal", "Mal io");
-             e.printStackTrace();
-         }
-
+         if(bitmap!=null){
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 0, stream);
-        return stream.toByteArray();
+             return stream.toByteArray();}
+
+         else{
+             Log.d("Bitmap","Nulllo");
+             return null;}
+
     }
 
 
